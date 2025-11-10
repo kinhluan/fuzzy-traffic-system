@@ -449,6 +449,134 @@ function getMockData() {
                 "delay_reduction_%": 34.3,
                 "fairness_improvement": 0.082
             }
+        },
+        "rush_ew": {
+            "scenario": {
+                "name": "Rush Hour (E-W)",
+                "description": "Heavy East-West traffic corridor",
+                "arrival_rates": {"north": 10, "south": 10, "east": 35, "west": 35}
+            },
+            "fuzzy": {
+                "average_waiting_time": 56.3,
+                "max_waiting_time": 192.1,
+                "average_queue_length": 14.8,
+                "max_queue_length": 50,
+                "throughput_per_hour": 1080,
+                "total_delay": 60696,
+                "fairness_index": 0.778
+            },
+            "fixed": {
+                "average_waiting_time": 87.5,
+                "max_waiting_time": 278.6,
+                "average_queue_length": 24.1,
+                "max_queue_length": 76,
+                "throughput_per_hour": 972,
+                "total_delay": 94500,
+                "fairness_index": 0.695
+            },
+            "comparison": {
+                "waiting_time_improvement_%": 35.7,
+                "queue_length_improvement_%": 38.6,
+                "throughput_improvement_%": 11.1,
+                "delay_reduction_%": 35.8,
+                "fairness_improvement": 0.083
+            }
+        },
+        "light": {
+            "scenario": {
+                "name": "Light Traffic",
+                "description": "Late night scenario with minimal traffic",
+                "arrival_rates": {"north": 5, "south": 5, "east": 5, "west": 5}
+            },
+            "fuzzy": {
+                "average_waiting_time": 28.4,
+                "max_waiting_time": 75.3,
+                "average_queue_length": 3.2,
+                "max_queue_length": 12,
+                "throughput_per_hour": 240,
+                "total_delay": 6816,
+                "fairness_index": 0.945
+            },
+            "fixed": {
+                "average_waiting_time": 35.8,
+                "max_waiting_time": 92.5,
+                "average_queue_length": 4.5,
+                "max_queue_length": 16,
+                "throughput_per_hour": 228,
+                "total_delay": 8604,
+                "fairness_index": 0.912
+            },
+            "comparison": {
+                "waiting_time_improvement_%": 20.7,
+                "queue_length_improvement_%": 28.9,
+                "throughput_improvement_%": 5.3,
+                "delay_reduction_%": 20.8,
+                "fairness_improvement": 0.033
+            }
+        },
+        "asymmetric_north": {
+            "scenario": {
+                "name": "Asymmetric (Heavy North)",
+                "description": "Very heavy traffic from North only",
+                "arrival_rates": {"north": 45, "south": 8, "east": 8, "west": 8}
+            },
+            "fuzzy": {
+                "average_waiting_time": 65.8,
+                "max_waiting_time": 215.3,
+                "average_queue_length": 18.5,
+                "max_queue_length": 62,
+                "throughput_per_hour": 828,
+                "total_delay": 54504,
+                "fairness_index": 0.652
+            },
+            "fixed": {
+                "average_waiting_time": 112.7,
+                "max_waiting_time": 342.8,
+                "average_queue_length": 32.4,
+                "max_queue_length": 98,
+                "throughput_per_hour": 720,
+                "total_delay": 93348,
+                "fairness_index": 0.542
+            },
+            "comparison": {
+                "waiting_time_improvement_%": 41.6,
+                "queue_length_improvement_%": 42.9,
+                "throughput_improvement_%": 15.0,
+                "delay_reduction_%": 41.6,
+                "fairness_improvement": 0.110
+            }
+        },
+        "peak": {
+            "scenario": {
+                "name": "Peak Congestion",
+                "description": "Extreme congestion with heavy traffic on all directions",
+                "arrival_rates": {"north": 40, "south": 40, "east": 40, "west": 40}
+            },
+            "fuzzy": {
+                "average_waiting_time": 98.5,
+                "max_waiting_time": 312.7,
+                "average_queue_length": 32.8,
+                "max_queue_length": 105,
+                "throughput_per_hour": 1920,
+                "total_delay": 189120,
+                "fairness_index": 0.723
+            },
+            "fixed": {
+                "average_waiting_time": 145.3,
+                "max_waiting_time": 458.2,
+                "average_queue_length": 52.6,
+                "max_queue_length": 152,
+                "throughput_per_hour": 1680,
+                "total_delay": 278976,
+                "fairness_index": 0.615
+            },
+            "comparison": {
+                "waiting_time_improvement_%": 32.2,
+                "queue_length_improvement_%": 37.6,
+                "throughput_improvement_%": 14.3,
+                "delay_reduction_%": 32.2,
+                "fairness_improvement": 0.108
+            }
         }
     };
 }

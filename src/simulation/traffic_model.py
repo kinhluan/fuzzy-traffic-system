@@ -46,6 +46,7 @@ class DirectionState:
     total_departures: int = 0
     total_waiting_time: float = 0.0
     arrival_rate: float = 10.0  # vehicles per minute
+    recent_departures: List[Vehicle] = field(default_factory=list)  # Track recent departures for metrics
 
     @property
     def queue_length(self) -> int:
@@ -155,6 +156,10 @@ class TrafficSimulator:
         Args:
             time_step: Time interval for processing departures (seconds)
         """
+        # Clear recent departures from previous timestep
+        for state in self.directions.values():
+            state.recent_departures.clear()
+
         for direction, state in self.directions.items():
             if state.light_state != LightState.GREEN:
                 continue
@@ -171,6 +176,7 @@ class TrafficSimulator:
                 waiting_time = vehicle.waiting_time
                 state.total_waiting_time += waiting_time
                 state.total_departures += 1
+                state.recent_departures.append(vehicle)  # Track for metrics
                 self.total_vehicles_departed += 1
                 departures_count += 1
 

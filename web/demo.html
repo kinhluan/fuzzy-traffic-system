@@ -9,75 +9,176 @@
         /* Additional styles for demo page */
         .intersection {
             position: relative;
-            width: 400px;
-            height: 400px;
+            width: 500px;
+            height: 500px;
             margin: 2rem auto;
-            background: #2d3748;
-            border-radius: 8px;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
         }
 
         .road {
             position: absolute;
-            background: #4a5568;
+            background: linear-gradient(to bottom, #475569 0%, #334155 100%);
         }
 
         .road.horizontal {
             width: 100%;
-            height: 80px;
-            top: 160px;
+            height: 100px;
+            top: 200px;
         }
 
         .road.vertical {
-            width: 80px;
+            width: 100px;
             height: 100%;
-            left: 160px;
+            left: 200px;
+        }
+
+        /* Lane markings */
+        .lane-line {
+            position: absolute;
+            background: #fbbf24;
+        }
+
+        .lane-line.horizontal {
+            width: 100%;
+            height: 2px;
+            left: 0;
+        }
+
+        .lane-line.vertical {
+            width: 2px;
+            height: 100%;
+            top: 0;
         }
 
         .center-box {
             position: absolute;
-            width: 80px;
-            height: 80px;
-            top: 160px;
-            left: 160px;
-            background: #1a202c;
-            border-radius: 4px;
+            width: 100px;
+            height: 100px;
+            top: 200px;
+            left: 200px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border: 2px solid #fbbf24;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .traffic-light {
+        .center-box::before {
+            content: '⚠️';
+            font-size: 24px;
+            opacity: 0.5;
+        }
+
+        /* Stop lines */
+        .stop-line {
             position: absolute;
-            width: 20px;
-            height: 20px;
+            background: white;
+        }
+
+        .stop-line.north {
+            width: 100px;
+            height: 4px;
+            top: 195px;
+            left: 200px;
+        }
+
+        .stop-line.south {
+            width: 100px;
+            height: 4px;
+            bottom: 195px;
+            left: 200px;
+        }
+
+        .stop-line.east {
+            width: 4px;
+            height: 100px;
+            right: 195px;
+            top: 200px;
+        }
+
+        .stop-line.west {
+            width: 4px;
+            height: 100px;
+            left: 195px;
+            top: 200px;
+        }
+
+        /* Traffic light poles */
+        .traffic-light-pole {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            background: #1e293b;
+            padding: 8px;
+            border-radius: 8px;
+            border: 2px solid #475569;
+        }
+
+        .pole-north { top: 160px; left: 220px; }
+        .pole-south { bottom: 160px; right: 220px; }
+        .pole-east { right: 160px; top: 220px; }
+        .pole-west { left: 160px; bottom: 220px; }
+
+        .traffic-light {
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
+            background: #374151;
+            border: 2px solid #1f2937;
             transition: all 0.3s ease;
         }
 
-        .traffic-light.red {
-            background: #ef4444;
-            box-shadow: 0 0 10px #ef4444;
+        .traffic-light.active.red {
+            background: radial-gradient(circle, #ef4444 0%, #dc2626 100%);
+            box-shadow: 0 0 20px #ef4444, inset 0 0 10px rgba(255,255,255,0.3);
         }
 
-        .traffic-light.yellow {
-            background: #f59e0b;
-            box-shadow: 0 0 10px #f59e0b;
+        .traffic-light.active.yellow {
+            background: radial-gradient(circle, #fbbf24 0%, #f59e0b 100%);
+            box-shadow: 0 0 20px #fbbf24, inset 0 0 10px rgba(255,255,255,0.3);
         }
 
-        .traffic-light.green {
-            background: #10b981;
-            box-shadow: 0 0 10px #10b981;
+        .traffic-light.active.green {
+            background: radial-gradient(circle, #10b981 0%, #059669 100%);
+            box-shadow: 0 0 20px #10b981, inset 0 0 10px rgba(255,255,255,0.3);
         }
 
-        .light-north { top: 130px; left: 190px; }
-        .light-south { bottom: 130px; right: 190px; }
-        .light-east { right: 130px; top: 190px; }
-        .light-west { left: 130px; bottom: 190px; }
-
+        /* Vehicles */
         .vehicle {
             position: absolute;
-            width: 12px;
-            height: 20px;
-            background: #3b82f6;
+            width: 16px;
+            height: 24px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-radius: 3px;
+            border: 1px solid #1e40af;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .vehicle::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            height: 40%;
+            background: rgba(255,255,255,0.3);
             border-radius: 2px;
-            transition: all 0.5s ease;
+        }
+
+        .vehicle.north, .vehicle.south {
+            width: 16px;
+            height: 24px;
+        }
+
+        .vehicle.east, .vehicle.west {
+            width: 24px;
+            height: 16px;
         }
 
         .direction-label {
@@ -257,28 +358,61 @@
                     <!-- Roads -->
                     <div class="road horizontal"></div>
                     <div class="road vertical"></div>
+
+                    <!-- Lane markings -->
+                    <div class="lane-line horizontal" style="top: 249px;"></div>
+                    <div class="lane-line vertical" style="left: 249px;"></div>
+
+                    <!-- Stop lines -->
+                    <div class="stop-line north"></div>
+                    <div class="stop-line south"></div>
+                    <div class="stop-line east"></div>
+                    <div class="stop-line west"></div>
+
                     <div class="center-box"></div>
 
                     <!-- Direction Labels -->
-                    <div class="direction-label label-north">NORTH</div>
-                    <div class="direction-label label-south">SOUTH</div>
-                    <div class="direction-label label-east">EAST</div>
-                    <div class="direction-label label-west">WEST</div>
+                    <div class="direction-label label-north">🔼 NORTH</div>
+                    <div class="direction-label label-south">🔽 SOUTH</div>
+                    <div class="direction-label label-east">▶️ EAST</div>
+                    <div class="direction-label label-west">◀️ WEST</div>
 
-                    <!-- Traffic Lights -->
-                    <div class="traffic-light light-north red"></div>
-                    <div class="traffic-light light-south red"></div>
-                    <div class="traffic-light light-east red"></div>
-                    <div class="traffic-light light-west red"></div>
+                    <!-- Traffic Light Poles with 3 lights each -->
+                    <div class="traffic-light-pole pole-north">
+                        <div class="traffic-light" data-color="red" data-direction="north"></div>
+                        <div class="traffic-light" data-color="yellow" data-direction="north"></div>
+                        <div class="traffic-light" data-color="green" data-direction="north"></div>
+                    </div>
 
-                    <!-- Queue Counts -->
-                    <div class="queue-count count-north">0</div>
-                    <div class="queue-count count-south">0</div>
-                    <div class="queue-count count-east">0</div>
-                    <div class="queue-count count-west">0</div>
+                    <div class="traffic-light-pole pole-south">
+                        <div class="traffic-light" data-color="red" data-direction="south"></div>
+                        <div class="traffic-light" data-color="yellow" data-direction="south"></div>
+                        <div class="traffic-light" data-color="green" data-direction="south"></div>
+                    </div>
 
-                    <!-- Vehicles (will be added dynamically) -->
-                    <div id="vehicles-container"></div>
+                    <div class="traffic-light-pole pole-east">
+                        <div class="traffic-light" data-color="red" data-direction="east"></div>
+                        <div class="traffic-light" data-color="yellow" data-direction="east"></div>
+                        <div class="traffic-light" data-color="green" data-direction="east"></div>
+                    </div>
+
+                    <div class="traffic-light-pole pole-west">
+                        <div class="traffic-light" data-color="red" data-direction="west"></div>
+                        <div class="traffic-light" data-color="yellow" data-direction="west"></div>
+                        <div class="traffic-light" data-color="green" data-direction="west"></div>
+                    </div>
+
+                    <!-- Queue Counts with better styling -->
+                    <div class="queue-count count-north">🚗 0</div>
+                    <div class="queue-count count-south">🚗 0</div>
+                    <div class="queue-count count-east">🚗 0</div>
+                    <div class="queue-count count-west">🚗 0</div>
+
+                    <!-- Vehicles container -->
+                    <div id="vehicles-north"></div>
+                    <div id="vehicles-south"></div>
+                    <div id="vehicles-east"></div>
+                    <div id="vehicles-west"></div>
                 </div>
 
                 <!-- Controls -->

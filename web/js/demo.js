@@ -311,13 +311,65 @@ class TrafficDemo {
     }
 
     updateQueues() {
-        document.querySelector('.count-north').textContent = Math.floor(this.queues.north);
-        document.querySelector('.count-south').textContent = Math.floor(this.queues.south);
-        document.querySelector('.count-east').textContent = Math.floor(this.queues.east);
-        document.querySelector('.count-west').textContent = Math.floor(this.queues.west);
+        document.querySelector('.count-north').textContent = '🚗 ' + Math.floor(this.queues.north);
+        document.querySelector('.count-south').textContent = '🚗 ' + Math.floor(this.queues.south);
+        document.querySelector('.count-east').textContent = '🚗 ' + Math.floor(this.queues.east);
+        document.querySelector('.count-west').textContent = '🚗 ' + Math.floor(this.queues.west);
+
+        // Render vehicles visually
+        this.renderVehicles();
+    }
+
+    renderVehicles() {
+        const directions = ['north', 'south', 'east', 'west'];
+
+        directions.forEach(direction => {
+            const container = document.getElementById(`vehicles-${direction}`);
+            container.innerHTML = '';
+
+            const count = Math.min(Math.floor(this.queues[direction]), 10); // Max 10 visible
+            const positions = this.getVehiclePositions(direction, count);
+
+            for (let i = 0; i < count; i++) {
+                const vehicle = document.createElement('div');
+                vehicle.className = `vehicle ${direction}`;
+                vehicle.style.left = positions[i].x + 'px';
+                vehicle.style.top = positions[i].y + 'px';
+                container.appendChild(vehicle);
+            }
+        });
+    }
+
+    getVehiclePositions(direction, count) {
+        const positions = [];
+        const spacing = 30;
+
+        for (let i = 0; i < count; i++) {
+            let pos = { x: 0, y: 0 };
+
+            switch(direction) {
+                case 'north':
+                    pos = { x: 240, y: 180 - (i * spacing) };
+                    break;
+                case 'south':
+                    pos = { x: 240, y: 320 + (i * spacing) };
+                    break;
+                case 'east':
+                    pos = { x: 320 + (i * spacing), y: 240 };
+                    break;
+                case 'west':
+                    pos = { x: 180 - (i * spacing), y: 240 };
+                    break;
+            }
+
+            positions.push(pos);
+        }
+
+        return positions;
     }
 
     updateLights() {
+        // Determine which light should be active for each direction
         const lights = {
             north: 'red',
             south: 'red',
@@ -339,10 +391,18 @@ class TrafficDemo {
             lights.west = 'yellow';
         }
 
-        for (const direction in lights) {
-            const light = document.querySelector(`.light-${direction}`);
-            light.className = `traffic-light light-${direction} ${lights[direction]}`;
-        }
+        // Update all traffic lights (3 per direction)
+        document.querySelectorAll('.traffic-light').forEach(lightEl => {
+            const direction = lightEl.dataset.direction;
+            const color = lightEl.dataset.color;
+            const isActive = lights[direction] === color;
+
+            if (isActive) {
+                lightEl.classList.add('active', color);
+            } else {
+                lightEl.classList.remove('active', 'red', 'yellow', 'green');
+            }
+        });
     }
 }
 

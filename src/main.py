@@ -40,7 +40,7 @@ def run_simulation_with_fuzzy(scenario, duration: float = 1800) -> PerformanceMe
     metrics = PerformanceMetrics(simulation_duration=duration)
 
     time_step = 1.0
-    current_phase = 'ns_green'  # Start with North-South green
+    current_phase = 'init'  # Start with initialization phase
     phase_start_time = 0.0
     phase_duration = 0.0
 
@@ -59,9 +59,9 @@ def run_simulation_with_fuzzy(scenario, duration: float = 1800) -> PerformanceMe
         time_in_phase = simulator.current_time - phase_start_time
 
         if time_in_phase >= phase_duration:
-            # Switch phase
-            if current_phase == 'ns_green':
-                # Compute green time for NS
+            # Switch phase based on current state
+            if current_phase == 'init':
+                # Initialize with NS green
                 ns_green = (controller.compute_green_time('north', traffic_state) +
                            controller.compute_green_time('south', traffic_state)) / 2
                 phase_duration = ns_green
@@ -73,8 +73,20 @@ def run_simulation_with_fuzzy(scenario, duration: float = 1800) -> PerformanceMe
                     'east': LightState.RED,
                     'west': LightState.RED
                 })
-            elif current_phase == 'ns_yellow':
+            elif current_phase == 'ns_green':
+                # NS green finished, go to yellow
                 phase_duration = 3.0
+                phase_start_time = simulator.current_time
+                current_phase = 'ns_yellow'
+                simulator.set_all_lights({
+                    'north': LightState.YELLOW,
+                    'south': LightState.YELLOW,
+                    'east': LightState.RED,
+                    'west': LightState.RED
+                })
+            elif current_phase == 'ns_yellow':
+                # NS yellow finished, go to all red
+                phase_duration = 2.0
                 phase_start_time = simulator.current_time
                 current_phase = 'all_red_1'
                 simulator.set_all_lights({d: LightState.RED
@@ -125,11 +137,10 @@ def run_simulation_with_fuzzy(scenario, duration: float = 1800) -> PerformanceMe
         # Step simulation
         simulator.step(time_step)
 
-        # Record departures
+        # Record departures from this timestep
         for direction, dir_state in simulator.directions.items():
-            for vehicle in dir_state.queue:
-                if vehicle.departed and vehicle.departure_time == simulator.current_time:
-                    metrics.record_departure(direction, vehicle.waiting_time)
+            for vehicle in dir_state.recent_departures:
+                metrics.record_departure(direction, vehicle.waiting_time)
 
     return metrics
 
@@ -177,6 +188,11 @@ def run_simulation_with_fixed(scenario, duration: float = 1800) -> PerformanceMe
         # Step both simulator and controller
         simulator.step(time_step)
         controller.step(time_step)
+
+        # Record departures from this timestep
+        for direction, dir_state in simulator.directions.items():
+            for vehicle in dir_state.recent_departures:
+                metrics.record_departure(direction, vehicle.waiting_time)
 
     return metrics
 

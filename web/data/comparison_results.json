@@ -1,0 +1,1181 @@
+{
+  "normal": {
+    "scenario": {
+      "name": "Normal Traffic",
+      "description": "Balanced traffic with moderate flow on all directions",
+      "arrival_rates": {
+        "north": 12,
+        "south": 12,
+        "east": 12,
+        "west": 12
+      }
+    },
+    "fuzzy": {
+      "simulation_duration": 1800,
+      "total_arrivals": 0,
+      "total_departures": 1392,
+      "vehicles_in_system": -1392,
+      "average_waiting_time": 9.8125,
+      "max_waiting_time": 35.0,
+      "total_delay": 13659.0,
+      "average_queue_length": 7.621666666666667,
+      "max_queue_length": 21,
+      "throughput_per_hour": 2784.0,
+      "fairness_index": 0.9999466961918398,
+      "utilization_rate": 0.9955555555555555,
+      "by_direction": {
+        "north": {
+          "arrivals": 0,
+          "departures": 369,
+          "avg_waiting_time": 9.913279132791327,
+          "max_waiting_time": 31.0,
+          "avg_queue_length": 2.04,
+          "max_queue_length": 13,
+          "total_delay": 3658.0,
+          "throughput": 369
+        },
+        "south": {
+          "arrivals": 0,
+          "departures": 344,
+          "avg_waiting_time": 9.738372093023257,
+          "max_waiting_time": 35.0,
+          "avg_queue_length": 1.8633333333333333,
+          "max_queue_length": 11,
+          "total_delay": 3350.0,
+          "throughput": 344
+        },
+        "east": {
+          "arrivals": 0,
+          "departures": 343,
+          "avg_waiting_time": 9.74927113702624,
+          "max_waiting_time": 32.0,
+          "avg_queue_length": 1.8605555555555555,
+          "max_queue_length": 13,
+          "total_delay": 3344.0,
+          "throughput": 343
+        },
+        "west": {
+          "arrivals": 0,
+          "departures": 336,
+          "avg_waiting_time": 9.842261904761905,
+          "max_waiting_time": 31.0,
+          "avg_queue_length": 1.8577777777777778,
+          "max_queue_length": 9,
+          "total_delay": 3307.0,
+          "throughput": 336
+        }
+      }
+    },
+    "fixed": {
+      "simulation_duration": 1800,
+      "total_arrivals": 0,
+      "total_departures": 1376,
+      "vehicles_in_system": -1376,
+      "average_waiting_time": 15.694040697674419,
+      "max_waiting_time": 50.0,
+      "total_delay": 21595.0,
+      "average_queue_length": 12.255555555555556,
+      "max_queue_length": 33,
+      "throughput_per_hour": 2752.0,
+      "fairness_index": 0.9984616975018509,
+      "utilization_rate": 0.9983333333333333,
+      "by_direction": {
+        "north": {
+          "arrivals": 0,
+          "departures": 359,
+          "avg_waiting_time": 14.676880222841225,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 3.0755555555555554,
+          "max_queue_length": 17,
+          "total_delay": 5269.0,
+          "throughput": 359
+        },
+        "south": {
+          "arrivals": 0,
+          "departures": 335,
+          "avg_waiting_time": 16.050746268656717,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 3.096111111111111,
+          "max_queue_length": 14,
+          "total_delay": 5377.0,
+          "throughput": 335
+        },
+        "east": {
+          "arrivals": 0,
+          "departures": 344,
+          "avg_waiting_time": 16.27906976744186,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 3.111111111111111,
+          "max_queue_length": 18,
+          "total_delay": 5600.0,
+          "throughput": 344
+        },
+        "west": {
+          "arrivals": 0,
+          "departures": 338,
+          "avg_waiting_time": 15.825443786982248,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 2.972777777777778,
+          "max_queue_length": 15,
+          "total_delay": 5349.0,
+          "throughput": 338
+        }
+      }
+    },
+    "comparison": {
+      "waiting_time_improvement_%": 37.476267654549666,
+      "queue_length_improvement_%": 37.81051677243881,
+      "throughput_improvement_%": 1.1627906976744187,
+      "delay_reduction_%": 36.74924751099792,
+      "fairness_improvement": 0.00148499868998897
+    }
+  },
+  "rush_ns": {
+    "scenario": {
+      "name": "Rush Hour (N-S)",
+      "description": "Heavy North-South traffic (main road during rush hour)",
+      "arrival_rates": {
+        "north": 35,
+        "south": 35,
+        "east": 10,
+        "west": 10
+      }
+    },
+    "fuzzy": {
+      "simulation_duration": 1800,
+      "total_arrivals": 0,
+      "total_departures": 2592,
+      "vehicles_in_system": -2592,
+      "average_waiting_time": 13.641203703703704,
+      "max_waiting_time": 53.0,
+      "total_delay": 35358.0,
+      "average_queue_length": 19.70388888888889,
+      "max_queue_length": 58,
+      "throughput_per_hour": 5184.0,
+      "fairness_index": 0.956454597624337,
+      "utilization_rate": 0.9961111111111111,
+      "by_direction": {
+        "north": {
+          "arrivals": 0,
+          "departures": 1052,
+          "avg_waiting_time": 11.675855513307985,
+          "max_waiting_time": 45.0,
+          "avg_queue_length": 6.845555555555555,
+          "max_queue_length": 29,
+          "total_delay": 12283.0,
+          "throughput": 1052
+        },
+        "south": {
+          "arrivals": 0,
+          "departures": 970,
+          "avg_waiting_time": 12.762886597938145,
+          "max_waiting_time": 47.0,
+          "avg_queue_length": 6.916666666666667,
+          "max_queue_length": 28,
+          "total_delay": 12380.0,
+          "throughput": 970
+        },
+        "east": {
+          "arrivals": 0,
+          "departures": 287,
+          "avg_waiting_time": 19.1602787456446,
+          "max_waiting_time": 53.0,
+          "avg_queue_length": 3.055,
+          "max_queue_length": 15,
+          "total_delay": 5499.0,
+          "throughput": 287
+        },
+        "west": {
+          "arrivals": 0,
+          "departures": 283,
+          "avg_waiting_time": 18.36042402826855,
+          "max_waiting_time": 53.0,
+          "avg_queue_length": 2.8866666666666667,
+          "max_queue_length": 16,
+          "total_delay": 5196.0,
+          "throughput": 283
+        }
+      }
+    },
+    "fixed": {
+      "simulation_duration": 1800,
+      "total_arrivals": 0,
+      "total_departures": 2564,
+      "vehicles_in_system": -2564,
+      "average_waiting_time": 17.88767550702028,
+      "max_waiting_time": 51.0,
+      "total_delay": 45864.0,
+      "average_queue_length": 25.999444444444446,
+      "max_queue_length": 75,
+      "throughput_per_hour": 5128.0,
+      "fairness_index": 0.986008970716513,
+      "utilization_rate": 0.9961111111111111,
+      "by_direction": {
+        "north": {
+          "arrivals": 0,
+          "departures": 1037,
+          "avg_waiting_time": 18.988428158148505,
+          "max_waiting_time": 51.0,
+          "avg_queue_length": 11.228333333333333,
+          "max_queue_length": 43,
+          "total_delay": 19691.0,
+          "throughput": 1037
+        },
+        "south": {
+          "arrivals": 0,
+          "departures": 958,
+          "avg_waiting_time": 18.52713987473904,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 10.090555555555556,
+          "max_queue_length": 33,
+          "total_delay": 17749.0,
+          "throughput": 958
+        },
+        "east": {
+          "arrivals": 0,
+          "departures": 286,
+          "avg_waiting_time": 15.146853146853147,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 2.4072222222222224,
+          "max_queue_length": 13,
+          "total_delay": 4332.0,
+          "throughput": 286
+        },
+        "west": {
+          "arrivals": 0,
+          "departures": 283,
+          "avg_waiting_time": 14.459363957597173,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 2.2733333333333334,
+          "max_queue_length": 13,
+          "total_delay": 4092.0,
+          "throughput": 283
+        }
+      }
+    },
+    "comparison": {
+      "waiting_time_improvement_%": 23.739651368619615,
+      "queue_length_improvement_%": 24.214192610953226,
+      "throughput_improvement_%": 1.0920436817472698,
+      "delay_reduction_%": 22.906855049712192,
+      "fairness_improvement": -0.0295543730921759
+    }
+  },
+  "rush_ew": {
+    "scenario": {
+      "name": "Rush Hour (E-W)",
+      "description": "Heavy East-West traffic",
+      "arrival_rates": {
+        "north": 10,
+        "south": 10,
+        "east": 35,
+        "west": 35
+      }
+    },
+    "fuzzy": {
+      "simulation_duration": 1800,
+      "total_arrivals": 0,
+      "total_departures": 2572,
+      "vehicles_in_system": -2572,
+      "average_waiting_time": 12.645800933125972,
+      "max_waiting_time": 54.0,
+      "total_delay": 32525.0,
+      "average_queue_length": 18.45777777777778,
+      "max_queue_length": 59,
+      "throughput_per_hour": 5144.0,
+      "fairness_index": 0.9637220189280327,
+      "utilization_rate": 0.9994444444444445,
+      "by_direction": {
+        "north": {
+          "arrivals": 0,
+          "departures": 286,
+          "avg_waiting_time": 15.776223776223777,
+          "max_waiting_time": 52.0,
+          "avg_queue_length": 2.507222222222222,
+          "max_queue_length": 14,
+          "total_delay": 4512.0,
+          "throughput": 286
+        },
+        "south": {
+          "arrivals": 0,
+          "departures": 285,
+          "avg_waiting_time": 17.74736842105263,
+          "max_waiting_time": 54.0,
+          "avg_queue_length": 2.81,
+          "max_queue_length": 14,
+          "total_delay": 5058.0,
+          "throughput": 285
+        },
+        "east": {
+          "arrivals": 0,
+          "departures": 1041,
+          "avg_waiting_time": 11.576368876080691,
+          "max_waiting_time": 46.0,
+          "avg_queue_length": 6.913888888888889,
+          "max_queue_length": 33,
+          "total_delay": 12051.0,
+          "throughput": 1041
+        },
+        "west": {
+          "arrivals": 0,
+          "departures": 960,
+          "avg_waiting_time": 11.358333333333333,
+          "max_waiting_time": 45.0,
+          "avg_queue_length": 6.226666666666667,
+          "max_queue_length": 30,
+          "total_delay": 10904.0,
+          "throughput": 960
+        }
+      }
+    },
+    "fixed": {
+      "simulation_duration": 1800,
+      "total_arrivals": 0,
+      "total_departures": 2594,
+      "vehicles_in_system": -2594,
+      "average_waiting_time": 19.45875096376253,
+      "max_waiting_time": 51.0,
+      "total_delay": 50476.0,
+      "average_queue_length": 28.194444444444443,
+      "max_queue_length": 75,
+      "throughput_per_hour": 5188.0,
+      "fairness_index": 0.9687800158848676,
+      "utilization_rate": 0.9994444444444445,
+      "by_direction": {
+        "north": {
+          "arrivals": 0,
+          "departures": 281,
+          "avg_waiting_time": 13.96797153024911,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 2.2527777777777778,
+          "max_queue_length": 15,
+          "total_delay": 3925.0,
+          "throughput": 281
+        },
+        "south": {
+          "arrivals": 0,
+          "departures": 279,
+          "avg_waiting_time": 15.114695340501791,
+          "max_waiting_time": 49.0,
+          "avg_queue_length": 2.42,
+          "max_queue_length": 13,
+          "total_delay": 4217.0,
+          "throughput": 279
+        },
+        "east": {
+          "arrivals": 0,
+          "departures": 1057,
+          "avg_waiting_time": 21.28666035950804,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 12.501111111111111,
+          "max_queue_length": 44,
+          "total_delay": 22500.0,
+          "throughput": 1057
+        },
+        "west": {
+          "arrivals": 0,
+          "departures": 977,
+          "avg_waiting_time": 20.300921187308084,
+          "max_waiting_time": 51.0,
+          "avg_queue_length": 11.020555555555555,
+          "max_queue_length": 34,
+          "total_delay": 19834.0,
+          "throughput": 977
+        }
+      }
+    },
+    "comparison": {
+      "waiting_time_improvement_%": 35.012267967888164,
+      "queue_length_improvement_%": 34.53399014778324,
+      "throughput_improvement_%": -0.8481110254433308,
+      "delay_reduction_%": 35.563436088438074,
+      "fairness_improvement": -0.005057996956834954
+    }
+  },
+  "light": {
+    "scenario": {
+      "name": "Light Traffic",
+      "description": "Light traffic on all directions (late night scenario)",
+      "arrival_rates": {
+        "north": 5,
+        "south": 5,
+        "east": 5,
+        "west": 5
+      }
+    },
+    "fuzzy": {
+      "simulation_duration": 1800,
+      "total_arrivals": 0,
+      "total_departures": 600,
+      "vehicles_in_system": -600,
+      "average_waiting_time": 8.271666666666667,
+      "max_waiting_time": 27.0,
+      "total_delay": 4963.0,
+      "average_queue_length": 2.79,
+      "max_queue_length": 12,
+      "throughput_per_hour": 1200.0,
+      "fairness_index": 0.9965646952147413,
+      "utilization_rate": 0.885,
+      "by_direction": {
+        "north": {
+          "arrivals": 0,
+          "departures": 151,
+          "avg_waiting_time": 7.993377483443709,
+          "max_waiting_time": 27.0,
+          "avg_queue_length": 0.6905555555555556,
+          "max_queue_length": 6,
+          "total_delay": 1207.0,
+          "throughput": 151
+        },
+        "south": {
+          "arrivals": 0,
+          "departures": 136,
+          "avg_waiting_time": 8.316176470588236,
+          "max_waiting_time": 27.0,
+          "avg_queue_length": 0.6411111111111111,
+          "max_queue_length": 5,
+          "total_delay": 1131.0,
+          "throughput": 136
+        },
+        "east": {
+          "arrivals": 0,
+          "departures": 157,
+          "avg_waiting_time": 9.031847133757962,
+          "max_waiting_time": 27.0,
+          "avg_queue_length": 0.7877777777777778,
+          "max_queue_length": 6,
+          "total_delay": 1418.0,
+          "throughput": 157
+        },
+        "west": {
+          "arrivals": 0,
+          "departures": 156,
+          "avg_waiting_time": 7.737179487179487,
+          "max_waiting_time": 27.0,
+          "avg_queue_length": 0.6705555555555556,
+          "max_queue_length": 7,
+          "total_delay": 1207.0,
+          "throughput": 156
+        }
+      }
+    },
+    "fixed": {
+      "simulation_duration": 1800,
+      "total_arrivals": 0,
+      "total_departures": 593,
+      "vehicles_in_system": -593,
+      "average_waiting_time": 15.676222596964587,
+      "max_waiting_time": 50.0,
+      "total_delay": 9296.0,
+      "average_queue_length": 5.290555555555556,
+      "max_queue_length": 21,
+      "throughput_per_hour": 1186.0,
+      "fairness_index": 0.9997956204112511,
+      "utilization_rate": 0.96,
+      "by_direction": {
+        "north": {
+          "arrivals": 0,
+          "departures": 149,
+          "avg_waiting_time": 15.791946308724832,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 1.363888888888889,
+          "max_queue_length": 10,
+          "total_delay": 2353.0,
+          "throughput": 149
+        },
+        "south": {
+          "arrivals": 0,
+          "departures": 133,
+          "avg_waiting_time": 15.8796992481203,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 1.2405555555555556,
+          "max_queue_length": 9,
+          "total_delay": 2112.0,
+          "throughput": 133
+        },
+        "east": {
+          "arrivals": 0,
+          "departures": 156,
+          "avg_waiting_time": 15.762820512820513,
+          "max_waiting_time": 49.0,
+          "avg_queue_length": 1.366111111111111,
+          "max_queue_length": 10,
+          "total_delay": 2459.0,
+          "throughput": 156
+        },
+        "west": {
+          "arrivals": 0,
+          "departures": 155,
+          "avg_waiting_time": 15.303225806451612,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 1.32,
+          "max_queue_length": 11,
+          "total_delay": 2372.0,
+          "throughput": 155
+        }
+      }
+    },
+    "comparison": {
+      "waiting_time_improvement_%": 47.234312248995984,
+      "queue_length_improvement_%": 47.26451748398614,
+      "throughput_improvement_%": 1.1804384485666104,
+      "delay_reduction_%": 46.61144578313253,
+      "fairness_improvement": -0.003230925196509804
+    }
+  },
+  "asymmetric_north": {
+    "scenario": {
+      "name": "Asymmetric (Heavy North)",
+      "description": "Very heavy traffic from North only, testing adaptability",
+      "arrival_rates": {
+        "north": 45,
+        "south": 8,
+        "east": 8,
+        "west": 8
+      }
+    },
+    "fuzzy": {
+      "simulation_duration": 1800,
+      "total_arrivals": 0,
+      "total_departures": 2008,
+      "vehicles_in_system": -2008,
+      "average_waiting_time": 13.48207171314741,
+      "max_waiting_time": 49.0,
+      "total_delay": 27072.0,
+      "average_queue_length": 15.16611111111111,
+      "max_queue_length": 42,
+      "throughput_per_hour": 4016.0,
+      "fairness_index": 0.9320183109770321,
+      "utilization_rate": 0.9938888888888889,
+      "by_direction": {
+        "north": {
+          "arrivals": 0,
+          "departures": 1307,
+          "avg_waiting_time": 12.8814078041316,
+          "max_waiting_time": 41.0,
+          "avg_queue_length": 9.353333333333333,
+          "max_queue_length": 34,
+          "total_delay": 16836.0,
+          "throughput": 1307
+        },
+        "south": {
+          "arrivals": 0,
+          "departures": 232,
+          "avg_waiting_time": 8.487068965517242,
+          "max_waiting_time": 38.0,
+          "avg_queue_length": 1.093888888888889,
+          "max_queue_length": 11,
+          "total_delay": 1969.0,
+          "throughput": 232
+        },
+        "east": {
+          "arrivals": 0,
+          "departures": 225,
+          "avg_waiting_time": 18.106666666666666,
+          "max_waiting_time": 49.0,
+          "avg_queue_length": 2.325,
+          "max_queue_length": 14,
+          "total_delay": 4074.0,
+          "throughput": 225
+        },
+        "west": {
+          "arrivals": 0,
+          "departures": 244,
+          "avg_waiting_time": 17.184426229508198,
+          "max_waiting_time": 49.0,
+          "avg_queue_length": 2.3938888888888887,
+          "max_queue_length": 14,
+          "total_delay": 4193.0,
+          "throughput": 244
+        }
+      }
+    },
+    "fixed": {
+      "simulation_duration": 1800,
+      "total_arrivals": 0,
+      "total_departures": 1970,
+      "vehicles_in_system": -1970,
+      "average_waiting_time": 19.385279187817257,
+      "max_waiting_time": 53.0,
+      "total_delay": 38189.0,
+      "average_queue_length": 21.82888888888889,
+      "max_queue_length": 65,
+      "throughput_per_hour": 3940.0,
+      "fairness_index": 0.968364002283662,
+      "utilization_rate": 0.9938888888888889,
+      "by_direction": {
+        "north": {
+          "arrivals": 0,
+          "departures": 1263,
+          "avg_waiting_time": 21.8812351543943,
+          "max_waiting_time": 53.0,
+          "avg_queue_length": 15.906666666666666,
+          "max_queue_length": 53,
+          "total_delay": 27636.0,
+          "throughput": 1263
+        },
+        "south": {
+          "arrivals": 0,
+          "departures": 227,
+          "avg_waiting_time": 15.180616740088105,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 1.968888888888889,
+          "max_queue_length": 13,
+          "total_delay": 3446.0,
+          "throughput": 227
+        },
+        "east": {
+          "arrivals": 0,
+          "departures": 231,
+          "avg_waiting_time": 14.930735930735931,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 1.9183333333333332,
+          "max_queue_length": 13,
+          "total_delay": 3449.0,
+          "throughput": 231
+        },
+        "west": {
+          "arrivals": 0,
+          "departures": 249,
+          "avg_waiting_time": 14.690763052208835,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 2.035,
+          "max_queue_length": 15,
+          "total_delay": 3658.0,
+          "throughput": 249
+        }
+      }
+    },
+    "comparison": {
+      "waiting_time_improvement_%": 30.452011639738142,
+      "queue_length_improvement_%": 30.522752723200657,
+      "throughput_improvement_%": 1.9289340101522845,
+      "delay_reduction_%": 29.110476838880306,
+      "fairness_improvement": -0.0363456913066299
+    }
+  },
+  "peak": {
+    "scenario": {
+      "name": "Peak Congestion",
+      "description": "Very heavy traffic on all directions, stress test",
+      "arrival_rates": {
+        "north": 40,
+        "south": 40,
+        "east": 40,
+        "west": 40
+      }
+    },
+    "fuzzy": {
+      "simulation_duration": 1800,
+      "total_arrivals": 0,
+      "total_departures": 4655,
+      "vehicles_in_system": -4655,
+      "average_waiting_time": 20.36906552094522,
+      "max_waiting_time": 54.0,
+      "total_delay": 94818.0,
+      "average_queue_length": 53.23722222222222,
+      "max_queue_length": 90,
+      "throughput_per_hour": 9310.0,
+      "fairness_index": 0.9992859400450171,
+      "utilization_rate": 0.9988888888888889,
+      "by_direction": {
+        "north": {
+          "arrivals": 0,
+          "departures": 1139,
+          "avg_waiting_time": 20.46180860403863,
+          "max_waiting_time": 53.0,
+          "avg_queue_length": 13.152222222222223,
+          "max_queue_length": 45,
+          "total_delay": 23306.0,
+          "throughput": 1139
+        },
+        "south": {
+          "arrivals": 0,
+          "departures": 1157,
+          "avg_waiting_time": 21.22990492653414,
+          "max_waiting_time": 53.0,
+          "avg_queue_length": 14.002222222222223,
+          "max_queue_length": 45,
+          "total_delay": 24563.0,
+          "throughput": 1157
+        },
+        "east": {
+          "arrivals": 0,
+          "departures": 1184,
+          "avg_waiting_time": 19.919763513513512,
+          "max_waiting_time": 54.0,
+          "avg_queue_length": 13.102777777777778,
+          "max_queue_length": 42,
+          "total_delay": 23585.0,
+          "throughput": 1184
+        },
+        "west": {
+          "arrivals": 0,
+          "departures": 1175,
+          "avg_waiting_time": 19.884255319148934,
+          "max_waiting_time": 52.0,
+          "avg_queue_length": 12.98,
+          "max_queue_length": 46,
+          "total_delay": 23364.0,
+          "throughput": 1175
+        }
+      }
+    },
+    "fixed": {
+      "simulation_duration": 1800,
+      "total_arrivals": 0,
+      "total_departures": 4635,
+      "vehicles_in_system": -4635,
+      "average_waiting_time": 19.80302049622438,
+      "max_waiting_time": 52.0,
+      "total_delay": 91787.0,
+      "average_queue_length": 51.84888888888889,
+      "max_queue_length": 91,
+      "throughput_per_hour": 9270.0,
+      "fairness_index": 0.997462877890453,
+      "utilization_rate": 0.9988888888888889,
+      "by_direction": {
+        "north": {
+          "arrivals": 0,
+          "departures": 1134,
+          "avg_waiting_time": 21.394179894179896,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 13.813333333333333,
+          "max_queue_length": 40,
+          "total_delay": 24261.0,
+          "throughput": 1134
+        },
+        "south": {
+          "arrivals": 0,
+          "departures": 1151,
+          "avg_waiting_time": 19.949609035621197,
+          "max_waiting_time": 51.0,
+          "avg_queue_length": 13.267777777777777,
+          "max_queue_length": 40,
+          "total_delay": 22962.0,
+          "throughput": 1151
+        },
+        "east": {
+          "arrivals": 0,
+          "departures": 1177,
+          "avg_waiting_time": 18.832625318606627,
+          "max_waiting_time": 52.0,
+          "avg_queue_length": 12.324444444444444,
+          "max_queue_length": 44,
+          "total_delay": 22166.0,
+          "throughput": 1177
+        },
+        "west": {
+          "arrivals": 0,
+          "departures": 1173,
+          "avg_waiting_time": 19.09462915601023,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 12.443333333333333,
+          "max_queue_length": 41,
+          "total_delay": 22398.0,
+          "throughput": 1173
+        }
+      }
+    },
+    "comparison": {
+      "waiting_time_improvement_%": -2.85837720982393,
+      "queue_length_improvement_%": -2.677653008743361,
+      "throughput_improvement_%": 0.4314994606256742,
+      "delay_reduction_%": -3.302210552692647,
+      "fairness_improvement": 0.0018230621545641812
+    }
+  },
+  "morning": {
+    "scenario": {
+      "name": "Morning Commute",
+      "description": "Typical morning commute pattern (into city center)",
+      "arrival_rates": {
+        "north": 30,
+        "south": 10,
+        "east": 25,
+        "west": 8
+      }
+    },
+    "fuzzy": {
+      "simulation_duration": 1800,
+      "total_arrivals": 0,
+      "total_departures": 2064,
+      "vehicles_in_system": -2064,
+      "average_waiting_time": 14.751453488372093,
+      "max_waiting_time": 55.0,
+      "total_delay": 30447.0,
+      "average_queue_length": 17.067222222222224,
+      "max_queue_length": 40,
+      "throughput_per_hour": 4128.0,
+      "fairness_index": 0.989138918751027,
+      "utilization_rate": 0.9988888888888889,
+      "by_direction": {
+        "north": {
+          "arrivals": 0,
+          "departures": 862,
+          "avg_waiting_time": 15.660092807424594,
+          "max_waiting_time": 52.0,
+          "avg_queue_length": 7.607222222222222,
+          "max_queue_length": 34,
+          "total_delay": 13499.0,
+          "throughput": 862
+        },
+        "south": {
+          "arrivals": 0,
+          "departures": 271,
+          "avg_waiting_time": 12.062730627306273,
+          "max_waiting_time": 48.0,
+          "avg_queue_length": 1.8605555555555555,
+          "max_queue_length": 12,
+          "total_delay": 3269.0,
+          "throughput": 271
+        },
+        "east": {
+          "arrivals": 0,
+          "departures": 699,
+          "avg_waiting_time": 15.198855507868384,
+          "max_waiting_time": 55.0,
+          "avg_queue_length": 5.902222222222222,
+          "max_queue_length": 24,
+          "total_delay": 10624.0,
+          "throughput": 699
+        },
+        "west": {
+          "arrivals": 0,
+          "departures": 232,
+          "avg_waiting_time": 13.168103448275861,
+          "max_waiting_time": 47.0,
+          "avg_queue_length": 1.6972222222222222,
+          "max_queue_length": 10,
+          "total_delay": 3055.0,
+          "throughput": 232
+        }
+      }
+    },
+    "fixed": {
+      "simulation_duration": 1800,
+      "total_arrivals": 0,
+      "total_departures": 2050,
+      "vehicles_in_system": -2050,
+      "average_waiting_time": 17.123414634146343,
+      "max_waiting_time": 51.0,
+      "total_delay": 35103.0,
+      "average_queue_length": 19.93611111111111,
+      "max_queue_length": 45,
+      "throughput_per_hour": 4100.0,
+      "fairness_index": 0.9693743104299677,
+      "utilization_rate": 0.9988888888888889,
+      "by_direction": {
+        "north": {
+          "arrivals": 0,
+          "departures": 851,
+          "avg_waiting_time": 17.91891891891892,
+          "max_waiting_time": 51.0,
+          "avg_queue_length": 8.79888888888889,
+          "max_queue_length": 38,
+          "total_delay": 15249.0,
+          "throughput": 851
+        },
+        "south": {
+          "arrivals": 0,
+          "departures": 268,
+          "avg_waiting_time": 14.287313432835822,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 2.2344444444444442,
+          "max_queue_length": 14,
+          "total_delay": 3829.0,
+          "throughput": 268
+        },
+        "east": {
+          "arrivals": 0,
+          "departures": 699,
+          "avg_waiting_time": 18.955650929899857,
+          "max_waiting_time": 51.0,
+          "avg_queue_length": 7.361111111111111,
+          "max_queue_length": 27,
+          "total_delay": 13250.0,
+          "throughput": 699
+        },
+        "west": {
+          "arrivals": 0,
+          "departures": 232,
+          "avg_waiting_time": 11.961206896551724,
+          "max_waiting_time": 48.0,
+          "avg_queue_length": 1.5416666666666667,
+          "max_queue_length": 10,
+          "total_delay": 2775.0,
+          "throughput": 232
+        }
+      }
+    },
+    "comparison": {
+      "waiting_time_improvement_%": 13.852150382694392,
+      "queue_length_improvement_%": 14.390413821931155,
+      "throughput_improvement_%": 0.6829268292682927,
+      "delay_reduction_%": 13.263823604820102,
+      "fairness_improvement": 0.019764608321059307
+    }
+  },
+  "evening": {
+    "scenario": {
+      "name": "Evening Commute",
+      "description": "Typical evening commute pattern (leaving city center)",
+      "arrival_rates": {
+        "north": 10,
+        "south": 30,
+        "east": 8,
+        "west": 25
+      }
+    },
+    "fuzzy": {
+      "simulation_duration": 1800,
+      "total_arrivals": 0,
+      "total_departures": 2087,
+      "vehicles_in_system": -2087,
+      "average_waiting_time": 14.307139434595113,
+      "max_waiting_time": 56.0,
+      "total_delay": 29859.0,
+      "average_queue_length": 16.675,
+      "max_queue_length": 44,
+      "throughput_per_hour": 4174.0,
+      "fairness_index": 0.9799058108176341,
+      "utilization_rate": 0.9961111111111111,
+      "by_direction": {
+        "north": {
+          "arrivals": 0,
+          "departures": 288,
+          "avg_waiting_time": 11.097222222222221,
+          "max_waiting_time": 54.0,
+          "avg_queue_length": 1.7755555555555556,
+          "max_queue_length": 12,
+          "total_delay": 3196.0,
+          "throughput": 288
+        },
+        "south": {
+          "arrivals": 0,
+          "departures": 860,
+          "avg_waiting_time": 14.35,
+          "max_waiting_time": 53.0,
+          "avg_queue_length": 6.8661111111111115,
+          "max_queue_length": 32,
+          "total_delay": 12341.0,
+          "throughput": 860
+        },
+        "east": {
+          "arrivals": 0,
+          "departures": 219,
+          "avg_waiting_time": 12.315068493150685,
+          "max_waiting_time": 56.0,
+          "avg_queue_length": 1.4983333333333333,
+          "max_queue_length": 8,
+          "total_delay": 2697.0,
+          "throughput": 219
+        },
+        "west": {
+          "arrivals": 0,
+          "departures": 720,
+          "avg_waiting_time": 16.145833333333332,
+          "max_waiting_time": 56.0,
+          "avg_queue_length": 6.535,
+          "max_queue_length": 26,
+          "total_delay": 11625.0,
+          "throughput": 720
+        }
+      }
+    },
+    "fixed": {
+      "simulation_duration": 1800,
+      "total_arrivals": 0,
+      "total_departures": 2068,
+      "vehicles_in_system": -2068,
+      "average_waiting_time": 17.640232108317214,
+      "max_waiting_time": 51.0,
+      "total_delay": 36480.0,
+      "average_queue_length": 20.657777777777778,
+      "max_queue_length": 45,
+      "throughput_per_hour": 4136.0,
+      "fairness_index": 0.9885911126229652,
+      "utilization_rate": 0.9961111111111111,
+      "by_direction": {
+        "north": {
+          "arrivals": 0,
+          "departures": 279,
+          "avg_waiting_time": 17.27956989247312,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 2.808333333333333,
+          "max_queue_length": 14,
+          "total_delay": 4821.0,
+          "throughput": 279
+        },
+        "south": {
+          "arrivals": 0,
+          "departures": 843,
+          "avg_waiting_time": 17.619217081850532,
+          "max_waiting_time": 51.0,
+          "avg_queue_length": 8.509444444444444,
+          "max_queue_length": 32,
+          "total_delay": 14853.0,
+          "throughput": 843
+        },
+        "east": {
+          "arrivals": 0,
+          "departures": 219,
+          "avg_waiting_time": 13.972602739726028,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 1.7,
+          "max_queue_length": 10,
+          "total_delay": 3060.0,
+          "throughput": 219
+        },
+        "west": {
+          "arrivals": 0,
+          "departures": 727,
+          "avg_waiting_time": 18.90784044016506,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 7.64,
+          "max_queue_length": 31,
+          "total_delay": 13746.0,
+          "throughput": 727
+        }
+      }
+    },
+    "comparison": {
+      "waiting_time_improvement_%": 18.89483456485007,
+      "queue_length_improvement_%": 19.27979776247848,
+      "throughput_improvement_%": 0.918762088974855,
+      "delay_reduction_%": 18.14967105263158,
+      "fairness_improvement": -0.008685301805331114
+    }
+  },
+  "weekend": {
+    "scenario": {
+      "name": "Weekend Leisure",
+      "description": "Weekend traffic pattern with leisure trips",
+      "arrival_rates": {
+        "north": 15,
+        "south": 18,
+        "east": 15,
+        "west": 18
+      }
+    },
+    "fuzzy": {
+      "simulation_duration": 1800,
+      "total_arrivals": 0,
+      "total_departures": 1904,
+      "vehicles_in_system": -1904,
+      "average_waiting_time": 10.522058823529411,
+      "max_waiting_time": 43.0,
+      "total_delay": 20034.0,
+      "average_queue_length": 11.148888888888889,
+      "max_queue_length": 28,
+      "throughput_per_hour": 3808.0,
+      "fairness_index": 0.9989451411198931,
+      "utilization_rate": 0.9988888888888889,
+      "by_direction": {
+        "north": {
+          "arrivals": 0,
+          "departures": 443,
+          "avg_waiting_time": 11.103837471783295,
+          "max_waiting_time": 37.0,
+          "avg_queue_length": 2.7327777777777778,
+          "max_queue_length": 12,
+          "total_delay": 4919.0,
+          "throughput": 443
+        },
+        "south": {
+          "arrivals": 0,
+          "departures": 509,
+          "avg_waiting_time": 10.227897838899803,
+          "max_waiting_time": 38.0,
+          "avg_queue_length": 2.8922222222222222,
+          "max_queue_length": 15,
+          "total_delay": 5206.0,
+          "throughput": 509
+        },
+        "east": {
+          "arrivals": 0,
+          "departures": 428,
+          "avg_waiting_time": 10.315420560747663,
+          "max_waiting_time": 43.0,
+          "avg_queue_length": 2.455,
+          "max_queue_length": 13,
+          "total_delay": 4415.0,
+          "throughput": 428
+        },
+        "west": {
+          "arrivals": 0,
+          "departures": 524,
+          "avg_waiting_time": 10.48473282442748,
+          "max_waiting_time": 36.0,
+          "avg_queue_length": 3.068888888888889,
+          "max_queue_length": 15,
+          "total_delay": 5494.0,
+          "throughput": 524
+        }
+      }
+    },
+    "fixed": {
+      "simulation_duration": 1800,
+      "total_arrivals": 0,
+      "total_departures": 1886,
+      "vehicles_in_system": -1886,
+      "average_waiting_time": 15.563096500530223,
+      "max_waiting_time": 50.0,
+      "total_delay": 29352.0,
+      "average_queue_length": 16.61777777777778,
+      "max_queue_length": 37,
+      "throughput_per_hour": 3772.0,
+      "fairness_index": 0.9958795018158713,
+      "utilization_rate": 0.9988888888888889,
+      "by_direction": {
+        "north": {
+          "arrivals": 0,
+          "departures": 434,
+          "avg_waiting_time": 16.304147465437786,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 4.056111111111111,
+          "max_queue_length": 17,
+          "total_delay": 7076.0,
+          "throughput": 434
+        },
+        "south": {
+          "arrivals": 0,
+          "departures": 497,
+          "avg_waiting_time": 16.59758551307847,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 4.765555555555555,
+          "max_queue_length": 22,
+          "total_delay": 8249.0,
+          "throughput": 497
+        },
+        "east": {
+          "arrivals": 0,
+          "departures": 428,
+          "avg_waiting_time": 14.065420560747663,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 3.3466666666666667,
+          "max_queue_length": 16,
+          "total_delay": 6020.0,
+          "throughput": 428
+        },
+        "west": {
+          "arrivals": 0,
+          "departures": 527,
+          "avg_waiting_time": 15.193548387096774,
+          "max_waiting_time": 50.0,
+          "avg_queue_length": 4.4494444444444445,
+          "max_queue_length": 21,
+          "total_delay": 8007.0,
+          "throughput": 527
+        }
+      }
+    },
+    "comparison": {
+      "waiting_time_improvement_%": 32.39096844788611,
+      "queue_length_improvement_%": 32.909868948916824,
+      "throughput_improvement_%": 0.9544008483563097,
+      "delay_reduction_%": 31.745707277187247,
+      "fairness_improvement": 0.0030656393040218166
+    }
+  }
+}
