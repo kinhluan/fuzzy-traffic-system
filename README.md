@@ -183,28 +183,6 @@ The interactive web dashboard provides:
 - **Architecture Diagram**: System overview
 - **Fuzzy Rules Explorer**: View rule categories and examples
 
-### Deploy to GitHub Pages
-
-1. Push your code to GitHub:
-
-```bash
-git add .
-git commit -m "Initial commit"
-git push origin main
-```
-
-2. Enable GitHub Pages:
-   - Go to repository **Settings** → **Pages**
-   - Source: Deploy from branch `main`
-   - Folder: `/web`
-   - Click **Save**
-
-3. Access your dashboard at:
-
-   ```
-   https://kinhluan.github.io/fuzzy-traffic-system/
-   ```
-
 ## 🔬 Traffic Scenarios
 
 1. **Normal Traffic**: Balanced 12 veh/min on all directions
@@ -243,14 +221,11 @@ poetry run pytest tests/
 
 ## 📚 References
 
-1. **Fuzzy Traffic Light Control**:
-   - GitHub Repository: [masakazekiri/fuzzy-traffic-light-control](https://github.com/masakazekiri/fuzzy-traffic-light-control)
-
-2. **Research Papers**:
+1. **Research Papers**:
    - Adaptive Fuzzy Traffic Controllers (IEEE Xplore)
    - Mamdani Inference for Traffic Optimization
 
-3. **Fuzzy Logic**:
+2. **Fuzzy Logic**:
    - [scikit-fuzzy Documentation](https://pythonhosted.org/scikit-fuzzy/)
    - Fuzzy Logic Toolbox (MATLAB equivalent in Python)
 

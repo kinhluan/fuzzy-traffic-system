@@ -72,6 +72,7 @@ This creates `web/data/comparison_results.json`.
 ### View Dashboard
 
 **Option 1: Direct file**
+
 ```bash
 open web/index.html
 # or
@@ -79,6 +80,7 @@ firefox web/index.html
 ```
 
 **Option 2: Local server**
+
 ```bash
 cd web
 python -m http.server 8000
@@ -106,10 +108,12 @@ python -m http.server 8000
 ### GitHub Actions Fails
 
 **Error: Permission denied**
+
 - Go to Settings → Actions → General
 - Enable "Read and write permissions"
 
 **Error: Deploy failed**
+
 - Check Actions tab for error details
 - Verify `/web` folder exists in main branch
 - Ensure `deploy.yml` is in `.github/workflows/`
@@ -119,6 +123,7 @@ python -m http.server 8000
 This is normal if you haven't run the simulation yet.
 
 **To show real data:**
+
 ```bash
 python src/main.py
 git add web/data/comparison_results.json
@@ -147,6 +152,7 @@ git push
 To use a custom domain:
 
 1. Add `CNAME` file to `/web` directory:
+
    ```
    yourdomain.com
    ```
@@ -165,12 +171,14 @@ To use a custom domain:
 The project includes automatic deployment via GitHub Actions.
 
 **Every time you push to `main`:**
+
 1. GitHub Actions runs `.github/workflows/deploy.yml`
 2. Builds the site from `/web` folder
 3. Deploys to GitHub Pages
 4. Site updates automatically (~2-5 min)
 
 **To disable auto-deploy:**
+
 - Delete `.github/workflows/deploy.yml`
 - Or go to Actions → Disable workflow
 

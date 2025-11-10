@@ -9,6 +9,7 @@ All components have been successfully implemented and tested.
 ## 📊 Project Statistics
 
 ### Code Metrics
+
 - **Total Python Files:** 14
 - **Total Fuzzy Rules:** 112 (28 per direction × 4 directions)
 - **Traffic Scenarios:** 9 predefined scenarios
@@ -16,6 +17,7 @@ All components have been successfully implemented and tested.
 - **Lines of Code:** ~3,500+ (Python) + ~1,000+ (Web)
 
 ### Technologies Used
+
 - Python 3.11+
 - scikit-fuzzy (Mamdani inference)
 - NumPy, Pandas, Matplotlib
@@ -101,6 +103,7 @@ fuzzy-traffic-system/
 ## 🎯 Key Features Implemented
 
 ### ✅ Core Fuzzy Logic System
+
 - [x] 8 input variables (4 density + 4 waiting time)
 - [x] 1 output variable (green light duration 10-90s)
 - [x] Triangular membership functions (Low/Med/High)
@@ -112,6 +115,7 @@ fuzzy-traffic-system/
 - [x] Centroid defuzzification
 
 ### ✅ Traffic Simulation
+
 - [x] Queue-based traffic model
 - [x] Poisson arrival distribution
 - [x] Realistic vehicle departure mechanics
@@ -119,11 +123,13 @@ fuzzy-traffic-system/
 - [x] Support for yellow/all-red clearance intervals
 
 ### ✅ Controllers
+
 - [x] Adaptive fuzzy controller
 - [x] Fixed-time baseline controller (40s/40s)
 - [x] Complete traffic light cycle management
 
 ### ✅ Traffic Scenarios (9 Total)
+
 - [x] Normal traffic (balanced)
 - [x] Rush hour N-S
 - [x] Rush hour E-W
@@ -135,6 +141,7 @@ fuzzy-traffic-system/
 - [x] Weekend leisure
 
 ### ✅ Performance Metrics
+
 - [x] Average waiting time
 - [x] Maximum waiting time
 - [x] Queue length (avg/max)
@@ -144,6 +151,7 @@ fuzzy-traffic-system/
 - [x] Utilization rate
 
 ### ✅ Web Dashboard (GitHub Pages Ready)
+
 - [x] Responsive HTML/CSS design
 - [x] Interactive scenario selector
 - [x] 4 Chart.js visualizations:
@@ -157,6 +165,7 @@ fuzzy-traffic-system/
 - [x] GitHub Pages deployment workflow
 
 ### ✅ Testing & Documentation
+
 - [x] Component test script (test_system.py)
 - [x] Example scripts
 - [x] Comprehensive README
@@ -184,6 +193,7 @@ Based on design and implementation:
 ## 🚀 Deployment Instructions
 
 ### Local Testing
+
 ```bash
 poetry install
 poetry shell
@@ -193,6 +203,7 @@ open web/index.html            # View dashboard
 ```
 
 ### GitHub Pages Deployment
+
 1. Push code to GitHub repository
 2. Go to **Settings** → **Pages**
 3. Source: Deploy from branch `main`, folder `/web`
@@ -242,6 +253,7 @@ This project demonstrates:
 ## 🔮 Future Enhancements (Optional)
 
 ### Phase 2 (Advanced Features)
+
 - [ ] SUMO (Simulation of Urban MObility) integration
 - [ ] Real-time visualization with animation
 - [ ] Machine learning hybrid approach
@@ -249,6 +261,7 @@ This project demonstrates:
 - [ ] Emergency vehicle prioritization
 
 ### Phase 3 (Research Extensions)
+
 - [ ] Genetic algorithm optimization of rules
 - [ ] Type-2 fuzzy logic implementation
 - [ ] Deep learning traffic prediction
@@ -259,6 +272,7 @@ This project demonstrates:
 ## ✨ Project Highlights
 
 **Key Achievement:** Successfully implemented a complete, production-ready fuzzy traffic control system with:
+
 - 112 fuzzy rules
 - 9 traffic scenarios
 - Comprehensive metrics
