@@ -37,17 +37,20 @@ An intelligent traffic light control system using **Fuzzy Logic** and **Mamdani 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/kinhluan/fuzzy-traffic-system.git
 cd fuzzy-traffic-system
 ```
 
 2. Install dependencies using Poetry:
+
 ```bash
 poetry install
 ```
 
 3. Activate the virtual environment:
+
 ```bash
 poetry shell
 ```
@@ -61,6 +64,7 @@ python src/main.py
 ```
 
 This will:
+
 - Run simulations for all predefined scenarios
 - Compare Fuzzy vs Fixed-Time controllers
 - Generate performance metrics
@@ -69,16 +73,19 @@ This will:
 ### Testing Individual Components
 
 Test fuzzy controller:
+
 ```bash
 python src/fuzzy_controller/controller.py
 ```
 
 Test traffic simulator:
+
 ```bash
 python src/simulation/traffic_model.py
 ```
 
 Test membership functions:
+
 ```bash
 python src/fuzzy_controller/membership_functions.py
 ```
@@ -125,18 +132,21 @@ fuzzy-traffic-system/
 ### Fuzzy Rules Categories
 
 #### 1. Primary Density-Based Rules (12 rules)
+
 ```
 IF current_density HIGH AND opposite_density LOW
 THEN green_time VERY_LONG
 ```
 
 #### 2. Waiting Time Priority Rules (8 rules)
+
 ```
 IF waiting_time VERY_LONG
 THEN green_time LONG (prevent starvation)
 ```
 
 #### 3. Fairness & Balance Rules (8 rules)
+
 ```
 IF all_directions HIGH_DENSITY
 THEN green_time MEDIUM (rotate fairly)
@@ -176,6 +186,7 @@ The interactive web dashboard provides:
 ### Deploy to GitHub Pages
 
 1. Push your code to GitHub:
+
 ```bash
 git add .
 git commit -m "Initial commit"
@@ -189,6 +200,7 @@ git push origin main
    - Click **Save**
 
 3. Access your dashboard at:
+
    ```
    https://kinhluan.github.io/fuzzy-traffic-system/
    ```
@@ -252,8 +264,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 👨‍🎓 Author
 
-**Luân B**
-Project for: Fuzzy Logic and Applications Course
+- **Luân B**
+
+- Project for: Fuzzy Logic and Applications Course
 
 ## 🙏 Acknowledgments
 

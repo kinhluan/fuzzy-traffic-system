@@ -5,6 +5,7 @@ This folder contains documentation, diagrams, and generated visualizations for t
 ## 📊 Generated Visualizations
 
 ### Membership Functions
+
 ![Membership Functions](membership_functions.png)
 
 **File:** `membership_functions.png`
@@ -41,6 +42,7 @@ Additional documentation assets can be placed here:
 ## 🎨 Image Formats
 
 All visualizations are saved as PNG files with:
+
 - Resolution: 300 DPI
 - Format: RGB
 - Dimensions: Optimized for documentation
