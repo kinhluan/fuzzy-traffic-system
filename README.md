@@ -12,9 +12,8 @@ An intelligent traffic light control system using **Fuzzy Logic** and **Mamdani 
 - **🚗 Realistic Queue-Based Simulation** using Poisson arrival distribution
 - **📈 14-47% Performance Improvement** over fixed-time controllers (average +27.3%)
 - **⚖️ Fairness-Aware Optimization** preventing vehicle starvation
-- **🌐 Interactive Web Dashboard** with real-time visualizations and scenario demos
+- **🌐 Interactive Web Dashboard** with real-time visualizations
 - **📊 Comprehensive Metrics** (waiting time, queue length, throughput, fairness index)
-- **🎮 Live Traffic Demo** with animated intersection visualization
 
 ## 🏗️ System Architecture
 
@@ -100,9 +99,9 @@ Then open **http://localhost:8000** in your browser.
 
 **Dashboard Features:**
 - 📊 Performance comparison charts (waiting time, queue length, throughput)
-- 🎮 Interactive traffic demo with live visualization
 - 📈 Detailed metrics tables for all scenarios
 - 🎯 Scenario selector to compare different traffic patterns
+- 🏗️ System architecture overview
 
 ### Testing Individual Components
 
@@ -134,11 +133,9 @@ fuzzy-traffic-system/
 │   └── main.py                     # Main comparison script
 ├── web/
 │   ├── index.html                  # Dashboard homepage
-│   ├── demo.html                   # Interactive traffic demo
 │   ├── css/style.css               # Styling
 │   ├── js/
-│   │   ├── main.js                 # Dashboard visualizations
-│   │   └── demo.js                 # Live demo controller
+│   │   └── main.js                 # Dashboard visualizations
 │   └── data/
 │       └── comparison_results.json # Generated simulation results
 ├── scripts/
@@ -260,24 +257,6 @@ The interactive web dashboard provides:
 - **🏗️ Architecture Diagram**: System overview and data flow
 - **📜 Fuzzy Rules Explorer**: View rule categories and examples
 
-### Interactive Demo (`demo.html`)
-
-Real-time traffic simulation with:
-
-- **🚦 Live Intersection View**: Animated 4-way intersection with:
-  - Realistic traffic lights (3-color: red, yellow, green)
-  - Dynamic vehicle rendering (up to 10 visible per direction)
-  - Lane markings and stop lines
-  - Queue counters for each direction
-- **⚙️ Controller Selection**: Toggle between Fuzzy and Fixed-Time
-- **🎯 Scenario Selection**: 6 predefined traffic patterns
-- **⏱️ Speed Control**: 1x to 10x simulation speed
-- **📊 Real-time Stats**: Live updates of:
-  - Simulation time
-  - Total vehicles processed
-  - Average waiting time
-  - Current queue lengths
-
 ## 🔬 Traffic Scenarios
 
 1. **Normal Traffic**: Balanced 12 veh/min on all directions
@@ -315,7 +294,9 @@ This tests all 6 core components:
 - **[Quick Start Guide](QUICKSTART.md)**: 5-minute setup guide
 - **[Deployment Guide](DEPLOYMENT_GUIDE.md)**: Deploy to GitHub Pages
 - **[Project Summary](PROJECT_SUMMARY.md)**: Complete project overview
+- **[SUMO Integration Guide](docs/SUMO_INTEGRATION.md)**: How to integrate SUMO (Simulation of Urban MObility)
 - **[Scripts Documentation](scripts/README.md)**: All available shell scripts
+- **[Membership Functions Analysis](docs/README.md)**: Detailed fuzzy logic analysis
 - **Membership Functions Visualization**: `docs/membership_functions.png`
 
 ## 🛠️ Technologies Used
