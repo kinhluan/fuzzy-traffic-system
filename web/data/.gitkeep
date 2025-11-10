@@ -1,0 +1,2 @@
+# This directory will contain generated comparison results
+# Run `python src/main.py` to generate comparison_results.json

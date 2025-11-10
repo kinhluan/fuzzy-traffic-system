@@ -1,0 +1,30 @@
+[project]
+name = "fuzzy-traffic-system"
+version = "0.1.0"
+description = "Fuzzy Logic-Based Traffic Light Control System"
+authors = [
+    {name = "Luân B"}
+]
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    "numpy (>=2.3.4,<3.0.0)",
+    "scikit-fuzzy (>=0.5.0,<0.6.0)",
+    "matplotlib (>=3.10.7,<4.0.0)",
+    "pandas (>=2.3.3,<3.0.0)",
+    "pyyaml (>=6.0.3,<7.0.0)",
+    "scipy (>=1.16.3,<2.0.0)",
+    "networkx (>=3.5,<4.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.0.0"
+black = "^25.11.0"
+flake8 = "^7.3.0"
+mypy = "^1.18.2"
+

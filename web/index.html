@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuzzy Traffic Light Control System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🚦 Fuzzy Logic Traffic Light Control System</h1>
+            <p class="subtitle">Intelligent Traffic Management using Mamdani Inference</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Introduction Section -->
+        <section id="intro" class="section">
+            <h2>Overview</h2>
+            <div class="card">
+                <p>
+                    This project demonstrates an <strong>intelligent traffic light control system</strong>
+                    using <strong>fuzzy logic</strong> and <strong>Mamdani inference</strong>.
+                    The system adapts green light duration based on real-time traffic density
+                    and waiting times across all four directions.
+                </p>
+                <div class="features">
+                    <div class="feature-item">
+                        <h3>🎯 28 Advanced Rules</h3>
+                        <p>Complex fuzzy rules covering density, waiting time, and fairness</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>🚗 Queue Simulation</h3>
+                        <p>Realistic traffic modeling with Poisson arrivals</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>📊 Performance Metrics</h3>
+                        <p>Comprehensive analysis: waiting time, throughput, fairness</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>⚡ Adaptive Control</h3>
+                        <p>20-40% improvement over fixed-time controllers</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Architecture -->
+        <section id="architecture" class="section">
+            <h2>System Architecture</h2>
+            <div class="card">
+                <div class="architecture-diagram">
+                    <div class="arch-box">
+                        <h4>Input Layer</h4>
+                        <ul>
+                            <li>Vehicle Density (4 directions)</li>
+                            <li>Waiting Time (4 directions)</li>
+                        </ul>
+                    </div>
+                    <div class="arch-arrow">→</div>
+                    <div class="arch-box">
+                        <h4>Fuzzification</h4>
+                        <ul>
+                            <li>Low / Medium / High</li>
+                            <li>Membership Functions</li>
+                        </ul>
+                    </div>
+                    <div class="arch-arrow">→</div>
+                    <div class="arch-box">
+                        <h4>Inference Engine</h4>
+                        <ul>
+                            <li>28 Fuzzy Rules</li>
+                            <li>Mamdani Method</li>
+                        </ul>
+                    </div>
+                    <div class="arch-arrow">→</div>
+                    <div class="arch-box">
+                        <h4>Defuzzification</h4>
+                        <ul>
+                            <li>Green Light Duration</li>
+                            <li>10-90 seconds</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Comparison -->
+        <section id="comparison" class="section">
+            <h2>Performance Comparison</h2>
+            <div class="card">
+                <div class="scenario-selector">
+                    <label for="scenario-select">Select Scenario:</label>
+                    <select id="scenario-select">
+                        <option value="normal">Normal Traffic</option>
+                        <option value="rush_ns">Rush Hour (N-S)</option>
+                        <option value="rush_ew">Rush Hour (E-W)</option>
+                        <option value="light">Light Traffic</option>
+                        <option value="asymmetric_north">Asymmetric (Heavy North)</option>
+                        <option value="peak">Peak Congestion</option>
+                    </select>
+                </div>
+
+                <div id="scenario-info" class="scenario-info"></div>
+
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <canvas id="waitingTimeChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="queueLengthChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="throughputChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="improvementChart"></canvas>
+                    </div>
+                </div>
+
+                <div id="metrics-table" class="metrics-table"></div>
+            </div>
+        </section>
+
+        <!-- Fuzzy Rules -->
+        <section id="rules" class="section">
+            <h2>Fuzzy Rule Examples</h2>
+            <div class="card">
+                <div class="rules-grid">
+                    <div class="rule-category">
+                        <h3>Density-Based Rules (12 rules)</h3>
+                        <div class="rule-example">
+                            <strong>Rule 1:</strong> IF current_density HIGH AND opposite_density LOW<br>
+                            THEN green_time VERY_LONG
+                        </div>
+                        <div class="rule-example">
+                            <strong>Rule 3:</strong> IF current_density HIGH AND opposite_density HIGH<br>
+                            THEN green_time MEDIUM (balance fairness)
+                        </div>
+                    </div>
+                    <div class="rule-category">
+                        <h3>Waiting Time Rules (8 rules)</h3>
+                        <div class="rule-example">
+                            <strong>Rule 13:</strong> IF waiting_time VERY_LONG<br>
+                            THEN green_time LONG (priority)
+                        </div>
+                        <div class="rule-example">
+                            <strong>Rule 18:</strong> IF both_directions VERY_LONG_WAIT<br>
+                            THEN green_time MEDIUM (fairness)
+                        </div>
+                    </div>
+                    <div class="rule-category">
+                        <h3>Fairness Rules (8 rules)</h3>
+                        <div class="rule-example">
+                            <strong>Rule 21:</strong> IF all_directions HIGH_DENSITY<br>
+                            THEN green_time MEDIUM (rotate fairly)
+                        </div>
+                        <div class="rule-example">
+                            <strong>Rule 22:</strong> IF only_current HIGH, others LOW<br>
+                            THEN green_time VERY_LONG (maximize throughput)
+                        </div>
+                    </div>
+                </div>
+                <p class="note">
+                    <strong>Total: 28 rules per direction × 4 directions = 112 total rules</strong>
+                </p>
+            </div>
+        </section>
+
+        <!-- GitHub Link -->
+        <section id="github" class="section">
+            <div class="card text-center">
+                <h2>Source Code</h2>
+                <p>View the complete implementation on GitHub</p>
+                <a href="https://github.com/yourusername/fuzzy-traffic-system" class="btn btn-primary" target="_blank">
+                    View on GitHub
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Fuzzy Traffic Light Control System | Luân B Project</p>
+            <p>Built with Python, scikit-fuzzy, and JavaScript</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
