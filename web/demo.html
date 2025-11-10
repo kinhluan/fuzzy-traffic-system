@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Scenarios Demo - Fuzzy Traffic System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Additional styles for demo page */
+        .intersection {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 2rem auto;
+            background: #2d3748;
+            border-radius: 8px;
+        }
+
+        .road {
+            position: absolute;
+            background: #4a5568;
+        }
+
+        .road.horizontal {
+            width: 100%;
+            height: 80px;
+            top: 160px;
+        }
+
+        .road.vertical {
+            width: 80px;
+            height: 100%;
+            left: 160px;
+        }
+
+        .center-box {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: 160px;
+            left: 160px;
+            background: #1a202c;
+            border-radius: 4px;
+        }
+
+        .traffic-light {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .traffic-light.red {
+            background: #ef4444;
+            box-shadow: 0 0 10px #ef4444;
+        }
+
+        .traffic-light.yellow {
+            background: #f59e0b;
+            box-shadow: 0 0 10px #f59e0b;
+        }
+
+        .traffic-light.green {
+            background: #10b981;
+            box-shadow: 0 0 10px #10b981;
+        }
+
+        .light-north { top: 130px; left: 190px; }
+        .light-south { bottom: 130px; right: 190px; }
+        .light-east { right: 130px; top: 190px; }
+        .light-west { left: 130px; bottom: 190px; }
+
+        .vehicle {
+            position: absolute;
+            width: 12px;
+            height: 20px;
+            background: #3b82f6;
+            border-radius: 2px;
+            transition: all 0.5s ease;
+        }
+
+        .direction-label {
+            position: absolute;
+            font-weight: bold;
+            color: white;
+            font-size: 14px;
+        }
+
+        .label-north { top: 10px; left: 50%; transform: translateX(-50%); }
+        .label-south { bottom: 10px; left: 50%; transform: translateX(-50%); }
+        .label-east { right: 10px; top: 50%; transform: translateY(-50%); }
+        .label-west { left: 10px; top: 50%; transform: translateY(-50%); }
+
+        .queue-count {
+            position: absolute;
+            background: rgba(239, 68, 68, 0.9);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .count-north { top: 40px; left: 50%; transform: translateX(-50%); }
+        .count-south { bottom: 40px; left: 50%; transform: translateX(-50%); }
+        .count-east { right: 40px; top: 50%; transform: translateY(-50%); }
+        .count-west { left: 40px; top: 50%; transform: translateY(-50%); }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-start {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-start:hover {
+            background: #059669;
+        }
+
+        .btn-pause {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .btn-pause:hover {
+            background: #d97706;
+        }
+
+        .btn-reset {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-reset:hover {
+            background: #dc2626;
+        }
+
+        .stats-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .stat-label {
+            color: #64748b;
+            margin-top: 0.5rem;
+        }
+
+        .controller-toggle {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        .toggle-btn {
+            padding: 0.5rem 1.5rem;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .toggle-btn.active {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🚦 Traffic Scenarios Demo</h1>
+            <p class="subtitle">Interactive Visualization of Fuzzy vs Fixed-Time Control</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Back to home -->
+        <div style="margin: 1rem 0;">
+            <a href="index.html" style="color: #2563eb; text-decoration: none;">← Back to Dashboard</a>
+        </div>
+
+        <!-- Scenario Selection -->
+        <section class="section">
+            <h2>Select Traffic Scenario</h2>
+            <div class="card">
+                <div class="scenario-selector">
+                    <label for="demo-scenario-select">Scenario:</label>
+                    <select id="demo-scenario-select">
+                        <option value="normal">Normal Traffic</option>
+                        <option value="rush_ns">Rush Hour (N-S)</option>
+                        <option value="rush_ew">Rush Hour (E-W)</option>
+                        <option value="light">Light Traffic</option>
+                        <option value="asymmetric_north">Asymmetric (Heavy North)</option>
+                        <option value="peak">Peak Congestion</option>
+                    </select>
+                </div>
+
+                <div id="scenario-description" style="margin-top: 1rem; padding: 1rem; background: #f1f5f9; border-radius: 6px;">
+                </div>
+            </div>
+        </section>
+
+        <!-- Controller Selection -->
+        <section class="section">
+            <h2>Controller Type</h2>
+            <div class="card">
+                <div class="controller-toggle">
+                    <button class="toggle-btn active" data-controller="fuzzy">
+                        🧠 Fuzzy Logic Controller
+                    </button>
+                    <button class="toggle-btn" data-controller="fixed">
+                        ⏱️ Fixed-Time Controller
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Intersection Visualization -->
+        <section class="section">
+            <h2>Live Intersection View</h2>
+            <div class="card">
+                <div class="intersection">
+                    <!-- Roads -->
+                    <div class="road horizontal"></div>
+                    <div class="road vertical"></div>
+                    <div class="center-box"></div>
+
+                    <!-- Direction Labels -->
+                    <div class="direction-label label-north">NORTH</div>
+                    <div class="direction-label label-south">SOUTH</div>
+                    <div class="direction-label label-east">EAST</div>
+                    <div class="direction-label label-west">WEST</div>
+
+                    <!-- Traffic Lights -->
+                    <div class="traffic-light light-north red"></div>
+                    <div class="traffic-light light-south red"></div>
+                    <div class="traffic-light light-east red"></div>
+                    <div class="traffic-light light-west red"></div>
+
+                    <!-- Queue Counts -->
+                    <div class="queue-count count-north">0</div>
+                    <div class="queue-count count-south">0</div>
+                    <div class="queue-count count-east">0</div>
+                    <div class="queue-count count-west">0</div>
+
+                    <!-- Vehicles (will be added dynamically) -->
+                    <div id="vehicles-container"></div>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <button class="btn btn-start" id="btn-start">▶ Start Simulation</button>
+                    <button class="btn btn-pause" id="btn-pause" disabled>⏸ Pause</button>
+                    <button class="btn btn-reset" id="btn-reset">🔄 Reset</button>
+                </div>
+
+                <!-- Speed Control -->
+                <div style="text-align: center; margin: 1rem 0;">
+                    <label>Speed: </label>
+                    <input type="range" id="speed-slider" min="1" max="10" value="5" style="width: 200px;">
+                    <span id="speed-value">5x</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics -->
+        <section class="section">
+            <h2>Real-time Statistics</h2>
+            <div class="card">
+                <div class="stats-panel">
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-time">0s</div>
+                        <div class="stat-label">Simulation Time</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-vehicles">0</div>
+                        <div class="stat-label">Total Vehicles</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-waiting">0s</div>
+                        <div class="stat-label">Avg Waiting Time</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-queue">0</div>
+                        <div class="stat-label">Total Queue Length</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Section -->
+        <section class="section">
+            <h2>How It Works</h2>
+            <div class="card">
+                <h3>🧠 Fuzzy Logic Controller</h3>
+                <p>
+                    The fuzzy controller adapts green light duration based on:
+                </p>
+                <ul>
+                    <li><strong>Vehicle Density:</strong> Number of waiting vehicles</li>
+                    <li><strong>Waiting Time:</strong> How long vehicles have been waiting</li>
+                    <li><strong>Fairness:</strong> Balances all directions to prevent starvation</li>
+                </ul>
+                <p>Uses 112 fuzzy rules with Mamdani inference for intelligent decision making.</p>
+
+                <h3 style="margin-top: 2rem;">⏱️ Fixed-Time Controller</h3>
+                <p>
+                    Traditional traffic light with predetermined timing:
+                </p>
+                <ul>
+                    <li>North-South: 40 seconds green</li>
+                    <li>East-West: 40 seconds green</li>
+                    <li>Yellow: 3 seconds, All-red: 2 seconds</li>
+                </ul>
+                <p>Does not adapt to traffic conditions.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Fuzzy Traffic Light Control System | Luân B Project</p>
+            <p>Built with Python, scikit-fuzzy, and JavaScript</p>
+        </div>
+    </footer>
+
+    <script src="js/demo.js"></script>
+</body>
+</html>
