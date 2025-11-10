@@ -342,23 +342,23 @@ class TrafficDemo {
 
     getVehiclePositions(direction, count) {
         const positions = [];
-        const spacing = 36; // Scaled from 30 to 36 for 600px intersection
+        const spacing = 48; // Scaled from 30 to 48 for 800px intersection (60% increase)
 
         for (let i = 0; i < count; i++) {
             let pos = { x: 0, y: 0 };
 
             switch(direction) {
                 case 'north':
-                    pos = { x: 288, y: 210 - (i * spacing) }; // Scaled: 240->288, 180->210
+                    pos = { x: 384, y: 270 - (i * spacing) }; // Scaled 60%: 240->384, 180->270
                     break;
                 case 'south':
-                    pos = { x: 288, y: 390 + (i * spacing) }; // Scaled: 240->288, 320->390
+                    pos = { x: 384, y: 530 + (i * spacing) }; // Scaled 60%: 240->384, 320->530
                     break;
                 case 'east':
-                    pos = { x: 390 + (i * spacing), y: 288 }; // Scaled: 320->390, 240->288
+                    pos = { x: 530 + (i * spacing), y: 384 }; // Scaled 60%: 320->530, 240->384
                     break;
                 case 'west':
-                    pos = { x: 210 - (i * spacing), y: 288 }; // Scaled: 180->210, 240->288
+                    pos = { x: 270 - (i * spacing), y: 384 }; // Scaled 60%: 180->270, 240->384
                     break;
             }
 

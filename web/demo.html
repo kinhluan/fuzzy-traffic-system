@@ -33,8 +33,8 @@
 
         .intersection {
             position: relative;
-            width: 600px;
-            height: 600px;
+            width: 800px;
+            height: 800px;
             background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -42,6 +42,13 @@
         }
 
         /* Responsive adjustments */
+        @media (max-width: 1400px) {
+            .intersection {
+                width: 700px;
+                height: 700px;
+            }
+        }
+
         @media (max-width: 1200px) {
             .demo-layout {
                 grid-template-columns: 1fr;
@@ -52,12 +59,19 @@
             }
 
             .intersection {
+                width: 600px;
+                height: 600px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .intersection {
                 width: 500px;
                 height: 500px;
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             .intersection {
                 width: 400px;
                 height: 400px;
@@ -85,14 +99,14 @@
 
         .road.horizontal {
             width: 100%;
-            height: 120px;
-            top: 240px;
+            height: 160px;
+            top: 320px;
         }
 
         .road.vertical {
-            width: 120px;
+            width: 160px;
             height: 100%;
-            left: 240px;
+            left: 320px;
         }
 
         /* Lane markings */
@@ -115,10 +129,10 @@
 
         .center-box {
             position: absolute;
-            width: 120px;
-            height: 120px;
-            top: 240px;
-            left: 240px;
+            width: 160px;
+            height: 160px;
+            top: 320px;
+            left: 320px;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             border: 2px solid #fbbf24;
             border-radius: 8px;
@@ -140,31 +154,31 @@
         }
 
         .stop-line.north {
-            width: 120px;
-            height: 4px;
-            top: 234px;
-            left: 240px;
+            width: 160px;
+            height: 5px;
+            top: 312px;
+            left: 320px;
         }
 
         .stop-line.south {
-            width: 120px;
-            height: 4px;
-            bottom: 234px;
-            left: 240px;
+            width: 160px;
+            height: 5px;
+            bottom: 312px;
+            left: 320px;
         }
 
         .stop-line.east {
-            width: 4px;
-            height: 120px;
-            right: 234px;
-            top: 240px;
+            width: 5px;
+            height: 160px;
+            right: 312px;
+            top: 320px;
         }
 
         .stop-line.west {
-            width: 4px;
-            height: 120px;
-            left: 234px;
-            top: 240px;
+            width: 5px;
+            height: 160px;
+            left: 312px;
+            top: 320px;
         }
 
         /* Traffic light poles */
@@ -179,14 +193,14 @@
             border: 2px solid #475569;
         }
 
-        .pole-north { top: 190px; left: 264px; }
-        .pole-south { bottom: 190px; right: 264px; }
-        .pole-east { right: 190px; top: 264px; }
-        .pole-west { left: 190px; bottom: 264px; }
+        .pole-north { top: 250px; left: 352px; }
+        .pole-south { bottom: 250px; right: 352px; }
+        .pole-east { right: 250px; top: 352px; }
+        .pole-west { left: 250px; bottom: 352px; }
 
         .traffic-light {
-            width: 24px;
-            height: 24px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             background: #374151;
             border: 2px solid #1f2937;
@@ -211,8 +225,8 @@
         /* Vehicles */
         .vehicle {
             position: absolute;
-            width: 16px;
-            height: 24px;
+            width: 20px;
+            height: 30px;
             background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             border-radius: 3px;
             border: 1px solid #1e40af;
@@ -232,13 +246,13 @@
         }
 
         .vehicle.north, .vehicle.south {
-            width: 16px;
-            height: 24px;
+            width: 20px;
+            height: 30px;
         }
 
         .vehicle.east, .vehicle.west {
-            width: 24px;
-            height: 16px;
+            width: 30px;
+            height: 20px;
         }
 
         .direction-label {
@@ -422,8 +436,8 @@
                     <div class="road vertical"></div>
 
                     <!-- Lane markings -->
-                    <div class="lane-line horizontal" style="top: 299px;"></div>
-                    <div class="lane-line vertical" style="left: 299px;"></div>
+                    <div class="lane-line horizontal" style="top: 399px;"></div>
+                    <div class="lane-line vertical" style="left: 399px;"></div>
 
                     <!-- Stop lines -->
                     <div class="stop-line north"></div>
