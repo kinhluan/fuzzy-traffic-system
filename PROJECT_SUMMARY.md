@@ -275,7 +275,8 @@ This project demonstrates:
 ## 📝 License & Attribution
 
 - **Project:** Fuzzy Traffic Light Control System
-- **Author:** SGU Student
+- **Author:** Luân B
+- **Institution:** Saigon University
 - **Course:** Fuzzy Logic and Applications
 - **Year:** 2025
 - **License:** MIT

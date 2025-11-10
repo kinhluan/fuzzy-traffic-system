@@ -252,7 +252,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 👨‍🎓 Author
 
-**SGU Student** - Saigon University
+**Luân B** - Saigon University
 Project for: Fuzzy Logic and Applications Course
 
 ## 🙏 Acknowledgments
