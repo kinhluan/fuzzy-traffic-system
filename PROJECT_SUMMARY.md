@@ -197,7 +197,7 @@ open web/index.html            # View dashboard
 2. Go to **Settings** → **Pages**
 3. Source: Deploy from branch `main`, folder `/web`
 4. Wait ~2 minutes for deployment
-5. Access: `https://yourusername.github.io/fuzzy-traffic-system/`
+5. Access: `https://kinhluan.github.io/fuzzy-traffic-system/`
 
 The GitHub Actions workflow will auto-deploy on every push to main.
 
@@ -276,7 +276,6 @@ This project demonstrates:
 
 - **Project:** Fuzzy Traffic Light Control System
 - **Author:** Luân B
-- **Institution:** Saigon University
 - **Course:** Fuzzy Logic and Applications
 - **Year:** 2025
 - **License:** MIT

@@ -154,6 +154,10 @@ if __name__ == "__main__":
     print(f"  - Input variables: {len(antecedents)}")
     print(f"  - Output variable: green_time")
 
-    # Visualize
+    # Visualize and save to docs folder
+    from pathlib import Path
+    docs_dir = Path(__file__).parent.parent.parent / 'docs'
+    docs_dir.mkdir(exist_ok=True)
+
     visualize_membership_functions(antecedents, green_time,
-                                   save_path="membership_functions.png")
+                                   save_path=str(docs_dir / "membership_functions.png"))

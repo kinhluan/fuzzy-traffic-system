@@ -6,7 +6,7 @@ Get up and running with the Fuzzy Traffic Light Control System in 5 minutes!
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/yourusername/fuzzy-traffic-system.git
+git clone https://github.com/kinhluan/fuzzy-traffic-system.git
 cd fuzzy-traffic-system
 ```
 
@@ -98,7 +98,7 @@ Expected runtime: 5-10 minutes
    - Go to repo **Settings** → **Pages**
    - Source: `main` branch, `/web` folder
    - Save and wait for deployment
-   - Access at: `https://yourusername.github.io/fuzzy-traffic-system/`
+   - Access at: `https://kinhluan.github.io/fuzzy-traffic-system/`
 
 ### Command Line Results
 

@@ -8,7 +8,7 @@
 # If you haven't already, create a new repo on GitHub
 # Then push your code:
 
-git remote add origin https://github.com/yourusername/fuzzy-traffic-system.git
+git remote add origin https://github.com/kinhluan/fuzzy-traffic-system.git
 git branch -M main
 git push -u origin main
 ```
@@ -37,20 +37,20 @@ git push -u origin main
 - GitHub Actions will automatically deploy your site
 - Check the **Actions** tab to see deployment progress
 - Usually takes 2-5 minutes
-- Your site will be live at: `https://yourusername.github.io/fuzzy-traffic-system/`
+- Your site will be live at: `https://kinhluan.github.io/fuzzy-traffic-system/`
 
 ### Step 5: Update README Links
 
 Update the following in `README.md`:
 
 ```markdown
-**[View Live Dashboard](https://yourusername.github.io/fuzzy-traffic-system/)**
+**[View Live Dashboard](https://kinhluan.github.io/fuzzy-traffic-system/)**
 ```
 
 And in `web/index.html`:
 
 ```html
-<a href="https://github.com/yourusername/fuzzy-traffic-system" ...>
+<a href="https://github.com/kinhluan/fuzzy-traffic-system" ...>
 ```
 
 ---
@@ -152,7 +152,7 @@ To use a custom domain:
    ```
 
 2. Configure DNS:
-   - Add CNAME record pointing to `yourusername.github.io`
+   - Add CNAME record pointing to `kinhluan.github.io`
 
 3. Go to Settings → Pages
    - Enter custom domain
@@ -180,7 +180,7 @@ The project includes automatic deployment via GitHub Actions.
 
 Before sharing your site:
 
-- [ ] Update all "yourusername" placeholders
+- [ ] Update all "kinhluan" placeholders
 - [ ] Add real comparison data
 - [ ] Test all scenarios in dashboard
 - [ ] Verify mobile responsiveness
@@ -193,4 +193,4 @@ Before sharing your site:
 
 **Your site is now live! 🎉**
 
-Share it: `https://yourusername.github.io/fuzzy-traffic-system/`
+Share it: `https://kinhluan.github.io/fuzzy-traffic-system/`

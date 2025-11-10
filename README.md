@@ -4,7 +4,7 @@ An intelligent traffic light control system using **Fuzzy Logic** and **Mamdani 
 
 ## 📊 Live Demo
 
-**[View Live Dashboard](https://yourusername.github.io/fuzzy-traffic-system/)**
+**[View Live Dashboard](https://kinhluan.github.io/fuzzy-traffic-system/)**
 
 ## ✨ Key Features
 
@@ -38,7 +38,7 @@ An intelligent traffic light control system using **Fuzzy Logic** and **Mamdani 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/fuzzy-traffic-system.git
+git clone https://github.com/kinhluan/fuzzy-traffic-system.git
 cd fuzzy-traffic-system
 ```
 
@@ -190,7 +190,7 @@ git push origin main
 
 3. Access your dashboard at:
    ```
-   https://yourusername.github.io/fuzzy-traffic-system/
+   https://kinhluan.github.io/fuzzy-traffic-system/
    ```
 
 ## 🔬 Traffic Scenarios
