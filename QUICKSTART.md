@@ -5,17 +5,20 @@ Get up and running with the Fuzzy Traffic Light Control System in 5 minutes!
 ## Installation
 
 1. **Clone the repository:**
+
 ```bash
 git clone https://github.com/kinhluan/fuzzy-traffic-system.git
 cd fuzzy-traffic-system
 ```
 
 2. **Install dependencies with Poetry:**
+
 ```bash
 poetry install
 ```
 
 3. **Activate the virtual environment:**
+
 ```bash
 poetry shell
 ```
@@ -23,12 +26,15 @@ poetry shell
 ## Quick Tests
 
 ### Test All Components
+
 Run the comprehensive system test:
+
 ```bash
 python test_system.py
 ```
 
 Expected output:
+
 ```
 ALL TESTS PASSED! ✓
 ✓ Created 8 input variables and 1 output variable
@@ -42,26 +48,33 @@ ALL TESTS PASSED! ✓
 ### Test Individual Components
 
 **Membership Functions:**
+
 ```bash
 python src/fuzzy_controller/membership_functions.py
 ```
+
 Generates `membership_functions.png` visualization.
 
 **Fuzzy Rules:**
+
 ```bash
 python src/fuzzy_controller/fuzzy_rules.py
 ```
+
 Shows summary of all 112 rules.
 
 **Traffic Scenarios:**
+
 ```bash
 python src/simulation/scenarios.py
 ```
+
 Lists all 9 predefined scenarios.
 
 ## Running Simulations
 
 ### Simple 2-Minute Demo
+
 ```bash
 python examples/simple_comparison.py
 ```
@@ -69,11 +82,13 @@ python examples/simple_comparison.py
 This runs a quick comparison between Fuzzy and Fixed-Time controllers.
 
 ### Full Comparison (All Scenarios)
+
 ```bash
 python src/main.py
 ```
 
 This will:
+
 - Run simulations for all 9 scenarios
 - Compare Fuzzy vs Fixed-Time performance
 - Generate `web/data/comparison_results.json`
@@ -90,11 +105,13 @@ Expected runtime: 5-10 minutes
    - Note: Charts will use mock data until you run `python src/main.py`
 
 2. **Option B: Deploy to GitHub Pages**
+
    ```bash
    git add .
    git commit -m "Initial commit"
    git push origin main
    ```
+
    - Go to repo **Settings** → **Pages**
    - Source: `main` branch, `/web` folder
    - Save and wait for deployment
@@ -162,25 +179,32 @@ fuzzy-traffic-system/
 ## Troubleshooting
 
 ### Import Errors
+
 If you see `ModuleNotFoundError`:
+
 ```bash
 poetry install  # Reinstall dependencies
 poetry shell    # Make sure you're in the virtual environment
 ```
 
 ### Missing scipy/networkx
+
 These should be installed automatically, but if not:
+
 ```bash
 poetry add scipy networkx
 ```
 
 ### Web Dashboard Shows Mock Data
+
 Run the simulation to generate real data:
+
 ```bash
 python src/main.py
 ```
 
 ### Port Already in Use (if using local server)
+
 ```bash
 # Use a different port
 python -m http.server 8001 --directory web
