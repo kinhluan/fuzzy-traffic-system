@@ -252,7 +252,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 👨‍🎓 Author
 
-**Luân B** - Saigon University
+**Luân B**
 Project for: Fuzzy Logic and Applications Course
 
 ## 🙏 Acknowledgments
@@ -268,7 +268,3 @@ Project for: Fuzzy Logic and Applications Course
 ## 📧 Contact
 
 For questions or feedback, please open an issue on GitHub.
-
----
-
-*Last updated: January 2025*
