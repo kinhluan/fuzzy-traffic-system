@@ -7,15 +7,75 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
         /* Additional styles for demo page */
+
+        /* Two-column layout */
+        .demo-layout {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .intersection-panel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .control-panel {
+            position: sticky;
+            top: 2rem;
+        }
+
         .intersection {
             position: relative;
-            width: 500px;
-            height: 500px;
-            margin: 2rem auto;
+            width: 600px;
+            height: 600px;
             background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             overflow: hidden;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .demo-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .control-panel {
+                position: static;
+            }
+
+            .intersection {
+                width: 500px;
+                height: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .intersection {
+                width: 400px;
+                height: 400px;
+            }
+        }
+
+        /* Stats grid for compact display */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 8px;
         }
 
         .road {
@@ -25,14 +85,14 @@
 
         .road.horizontal {
             width: 100%;
-            height: 100px;
-            top: 200px;
+            height: 120px;
+            top: 240px;
         }
 
         .road.vertical {
-            width: 100px;
+            width: 120px;
             height: 100%;
-            left: 200px;
+            left: 240px;
         }
 
         /* Lane markings */
@@ -55,10 +115,10 @@
 
         .center-box {
             position: absolute;
-            width: 100px;
-            height: 100px;
-            top: 200px;
-            left: 200px;
+            width: 120px;
+            height: 120px;
+            top: 240px;
+            left: 240px;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             border: 2px solid #fbbf24;
             border-radius: 8px;
@@ -80,31 +140,31 @@
         }
 
         .stop-line.north {
-            width: 100px;
+            width: 120px;
             height: 4px;
-            top: 195px;
-            left: 200px;
+            top: 234px;
+            left: 240px;
         }
 
         .stop-line.south {
-            width: 100px;
+            width: 120px;
             height: 4px;
-            bottom: 195px;
-            left: 200px;
+            bottom: 234px;
+            left: 240px;
         }
 
         .stop-line.east {
             width: 4px;
-            height: 100px;
-            right: 195px;
-            top: 200px;
+            height: 120px;
+            right: 234px;
+            top: 240px;
         }
 
         .stop-line.west {
             width: 4px;
-            height: 100px;
-            left: 195px;
-            top: 200px;
+            height: 120px;
+            left: 234px;
+            top: 240px;
         }
 
         /* Traffic light poles */
@@ -119,10 +179,10 @@
             border: 2px solid #475569;
         }
 
-        .pole-north { top: 160px; left: 220px; }
-        .pole-south { bottom: 160px; right: 220px; }
-        .pole-east { right: 160px; top: 220px; }
-        .pole-west { left: 160px; bottom: 220px; }
+        .pole-north { top: 190px; left: 264px; }
+        .pole-south { bottom: 190px; right: 264px; }
+        .pole-east { right: 190px; top: 264px; }
+        .pole-west { left: 190px; bottom: 264px; }
 
         .traffic-light {
             width: 24px;
@@ -353,15 +413,17 @@
         <!-- Intersection Visualization -->
         <section class="section">
             <h2>Live Intersection View</h2>
-            <div class="card">
-                <div class="intersection">
+            <div class="demo-layout">
+                <!-- Left Column: Intersection -->
+                <div class="intersection-panel">
+                    <div class="intersection">
                     <!-- Roads -->
                     <div class="road horizontal"></div>
                     <div class="road vertical"></div>
 
                     <!-- Lane markings -->
-                    <div class="lane-line horizontal" style="top: 249px;"></div>
-                    <div class="lane-line vertical" style="left: 249px;"></div>
+                    <div class="lane-line horizontal" style="top: 299px;"></div>
+                    <div class="lane-line vertical" style="left: 299px;"></div>
 
                     <!-- Stop lines -->
                     <div class="stop-line north"></div>
@@ -413,44 +475,51 @@
                     <div id="vehicles-south"></div>
                     <div id="vehicles-east"></div>
                     <div id="vehicles-west"></div>
+                    </div>
                 </div>
 
-                <!-- Controls -->
-                <div class="controls">
-                    <button class="btn btn-start" id="btn-start">▶ Start Simulation</button>
-                    <button class="btn btn-pause" id="btn-pause" disabled>⏸ Pause</button>
-                    <button class="btn btn-reset" id="btn-reset">🔄 Reset</button>
-                </div>
+                <!-- Right Column: Controls & Stats -->
+                <div class="control-panel">
+                    <!-- Controls Card -->
+                    <div class="card" style="margin-bottom: 1.5rem;">
+                        <h3 style="margin-top: 0;">Controls</h3>
+                        <div class="controls" style="flex-direction: column; gap: 0.75rem;">
+                            <button class="btn btn-start" id="btn-start" style="width: 100%;">▶ Start Simulation</button>
+                            <button class="btn btn-pause" id="btn-pause" disabled style="width: 100%;">⏸ Pause</button>
+                            <button class="btn btn-reset" id="btn-reset" style="width: 100%;">🔄 Reset</button>
+                        </div>
 
-                <!-- Speed Control -->
-                <div style="text-align: center; margin: 1rem 0;">
-                    <label>Speed: </label>
-                    <input type="range" id="speed-slider" min="1" max="10" value="5" style="width: 200px;">
-                    <span id="speed-value">5x</span>
-                </div>
-            </div>
-        </section>
+                        <!-- Speed Control -->
+                        <div style="margin-top: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Simulation Speed</label>
+                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                <input type="range" id="speed-slider" min="1" max="10" value="5" style="flex: 1;">
+                                <span id="speed-value" style="min-width: 40px; font-weight: bold; color: #2563eb;">5x</span>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Statistics -->
-        <section class="section">
-            <h2>Real-time Statistics</h2>
-            <div class="card">
-                <div class="stats-panel">
-                    <div class="stat-card">
-                        <div class="stat-value" id="stat-time">0s</div>
-                        <div class="stat-label">Simulation Time</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="stat-vehicles">0</div>
-                        <div class="stat-label">Total Vehicles</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="stat-waiting">0s</div>
-                        <div class="stat-label">Avg Waiting Time</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="stat-queue">0</div>
-                        <div class="stat-label">Total Queue Length</div>
+                    <!-- Real-time Statistics Card -->
+                    <div class="card">
+                        <h3 style="margin-top: 0;">Real-time Statistics</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-value" id="stat-time">0s</div>
+                                <div class="stat-label">Simulation Time</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="stat-vehicles">0</div>
+                                <div class="stat-label">Total Vehicles</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="stat-waiting">0s</div>
+                                <div class="stat-label">Avg Waiting Time</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="stat-queue">0</div>
+                                <div class="stat-label">Total Queue Length</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
