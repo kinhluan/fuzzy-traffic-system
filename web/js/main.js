@@ -252,10 +252,10 @@ function updateImprovementChart(data) {
     }
 
     const improvements = [
-        data.comparison.waiting_time_improvement_%,
-        data.comparison.queue_length_improvement_%,
-        data.comparison.throughput_improvement_%,
-        data.comparison.delay_reduction_%
+        data.comparison['waiting_time_improvement_%'],
+        data.comparison['queue_length_improvement_%'],
+        data.comparison['throughput_improvement_%'],
+        data.comparison['delay_reduction_%']
     ];
 
     charts.improvement = new Chart(ctx, {
@@ -328,8 +328,8 @@ function updateMetricsTable(data) {
                     <td>Avg Waiting Time</td>
                     <td>${fuzzy.average_waiting_time.toFixed(2)}s</td>
                     <td>${fixed.average_waiting_time.toFixed(2)}s</td>
-                    <td class="metric-improvement ${comp.waiting_time_improvement_% >= 0 ? 'positive' : 'negative'}">
-                        ${comp.waiting_time_improvement_% >= 0 ? '+' : ''}${comp.waiting_time_improvement_%.toFixed(1)}%
+                    <td class="metric-improvement ${comp['waiting_time_improvement_%'] >= 0 ? 'positive' : 'negative'}">
+                        ${comp['waiting_time_improvement_%'] >= 0 ? '+' : ''}${comp['waiting_time_improvement_%'].toFixed(1)}%
                     </td>
                 </tr>
                 <tr>
@@ -342,8 +342,8 @@ function updateMetricsTable(data) {
                     <td>Avg Queue Length</td>
                     <td>${fuzzy.average_queue_length.toFixed(2)} vehicles</td>
                     <td>${fixed.average_queue_length.toFixed(2)} vehicles</td>
-                    <td class="metric-improvement ${comp.queue_length_improvement_% >= 0 ? 'positive' : 'negative'}">
-                        ${comp.queue_length_improvement_% >= 0 ? '+' : ''}${comp.queue_length_improvement_%.toFixed(1)}%
+                    <td class="metric-improvement ${comp['queue_length_improvement_%'] >= 0 ? 'positive' : 'negative'}">
+                        ${comp['queue_length_improvement_%'] >= 0 ? '+' : ''}${comp['queue_length_improvement_%'].toFixed(1)}%
                     </td>
                 </tr>
                 <tr>
@@ -356,16 +356,16 @@ function updateMetricsTable(data) {
                     <td>Throughput</td>
                     <td>${fuzzy.throughput_per_hour.toFixed(1)} veh/h</td>
                     <td>${fixed.throughput_per_hour.toFixed(1)} veh/h</td>
-                    <td class="metric-improvement ${comp.throughput_improvement_% >= 0 ? 'positive' : 'negative'}">
-                        ${comp.throughput_improvement_% >= 0 ? '+' : ''}${comp.throughput_improvement_%.toFixed(1)}%
+                    <td class="metric-improvement ${comp['throughput_improvement_%'] >= 0 ? 'positive' : 'negative'}">
+                        ${comp['throughput_improvement_%'] >= 0 ? '+' : ''}${comp['throughput_improvement_%'].toFixed(1)}%
                     </td>
                 </tr>
                 <tr>
                     <td>Total Delay</td>
                     <td>${(fuzzy.total_delay / 3600).toFixed(2)}h</td>
                     <td>${(fixed.total_delay / 3600).toFixed(2)}h</td>
-                    <td class="metric-improvement ${comp.delay_reduction_% >= 0 ? 'positive' : 'negative'}">
-                        ${comp.delay_reduction_% >= 0 ? '+' : ''}${comp.delay_reduction_%.toFixed(1)}%
+                    <td class="metric-improvement ${comp['delay_reduction_%'] >= 0 ? 'positive' : 'negative'}">
+                        ${comp['delay_reduction_%'] >= 0 ? '+' : ''}${comp['delay_reduction_%'].toFixed(1)}%
                     </td>
                 </tr>
                 <tr>
