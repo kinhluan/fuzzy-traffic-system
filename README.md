@@ -9,10 +9,11 @@ An intelligent traffic light control system using **Fuzzy Logic** and **Mamdani 
 ## ✨ Key Features
 
 - **🎯 28 Advanced Fuzzy Rules** per direction (112 total rules)
-- **🚗 Realistic Queue-Based Simulation** using Poisson arrival distribution
-- **📈 14-47% Performance Improvement** over fixed-time controllers (average +27.3%)
+- **🚗 Queue-Based Simulation** using Poisson arrival distribution
+- **🚙 SUMO Integration** - microscopic traffic simulation with visual interface
+- **📈 27.3% Average Improvement** over fixed-time controllers
 - **⚖️ Fairness-Aware Optimization** preventing vehicle starvation
-- **🌐 Interactive Web Dashboard** with real-time visualizations
+- **🌐 Interactive Web Dashboard** with 9 traffic scenarios
 - **📊 Comprehensive Metrics** (waiting time, queue length, throughput, fairness index)
 
 ## 🏗️ System Architecture
@@ -57,32 +58,40 @@ poetry shell
 
 ### Running the Simulation
 
-**Option 1: Using Shell Scripts (Recommended)**
+**Option 1: Queue-Based Simulation (Fast)**
 
 ```bash
-# Run full simulation (5-10 minutes, all 9 scenarios)
+# Run full simulation (all 9 scenarios)
 ./scripts/run.sh
 
-# Or quick demo (2 minutes, 1 scenario)
+# Or quick demo (1 scenario)
 ./scripts/demo.sh
 ```
 
-**Option 2: Direct Python Execution**
+**Option 2: SUMO Simulation (Visual)**
 
 ```bash
-# Full simulation
-poetry run python src/main.py
+# Setup SUMO network
+./scripts/sumo_setup.sh
 
-# Individual scenario test
-poetry run python examples/simple_comparison.py
+# Run with SUMO-GUI
+./scripts/sumo_run.sh
+
+# Run headless (faster)
+./scripts/sumo_headless.sh
 ```
 
-This will:
+See [SUMO_QUICKSTART.md](SUMO_QUICKSTART.md) for SUMO installation and setup.
 
-- Run simulations for all 9 traffic scenarios
-- Compare Fuzzy vs Fixed-Time controllers (30 min simulation each)
-- Generate comprehensive performance metrics
-- Export results to `web/data/comparison_results.json`
+**Option 3: Direct Python Execution**
+
+```bash
+# Queue-based simulation
+poetry run python src/main.py
+
+# SUMO demo
+poetry run python examples/demo_sumo.py
+```
 
 ### View the Dashboard
 
@@ -128,30 +137,39 @@ fuzzy-traffic-system/
 │   │   └── controller.py           # Main fuzzy controller
 │   ├── simulation/
 │   │   ├── traffic_model.py        # Queue-based traffic simulator
+│   │   ├── sumo_simulator.py       # SUMO integration (TraCI)
 │   │   ├── fixed_controller.py     # Fixed-time baseline controller
 │   │   └── scenarios.py            # Traffic scenarios (9 scenarios)
 │   ├── utils/
 │   │   └── metrics.py              # Performance metrics calculator
 │   └── main.py                     # Main comparison script
+├── sumo_files/
+│   ├── networks/                   # SUMO network definitions
+│   ├── routes/                     # Traffic demand (route files)
+│   └── configs/                    # SUMO configuration files
 ├── web/
 │   ├── index.html                  # Dashboard homepage
 │   ├── css/style.css               # Styling
 │   ├── js/
-│   │   └── main.js                 # Dashboard visualizations
+│   │   └── main_enhanced.js        # Dashboard visualizations (9 scenarios)
 │   └── data/
 │       └── comparison_results.json # Generated simulation results
 ├── scripts/
-│   ├── setup.sh                    # Install dependencies
-│   ├── run.sh                      # Run full simulation
+│   ├── run.sh                      # Run queue-based simulation
 │   ├── demo.sh                     # Quick demo
+│   ├── sumo_setup.sh               # Generate SUMO network
+│   ├── sumo_run.sh                 # Run SUMO with fuzzy controller
+│   ├── sumo_gui.sh                 # Open SUMO-GUI (manual mode)
+│   ├── sumo_headless.sh            # Run SUMO headless (faster)
 │   ├── test.sh                     # Run tests
 │   ├── serve.sh                    # Start web server
-│   ├── visualize.sh                # Generate visualizations
 │   └── clean.sh                    # Clean caches
+├── examples/
+│   ├── simple_comparison.py        # Basic comparison example
+│   └── demo_sumo.py                # SUMO integration demo
 ├── docs/                           # Documentation & visualizations
-├── examples/                       # Example scripts
-├── pyproject.toml                  # Poetry dependencies
-├── test_system.py                  # System integration tests
+├── SUMO_QUICKSTART.md              # SUMO quick start guide
+├── WEB_DASHBOARD_GUIDE.md          # Web dashboard user guide
 └── README.md
 ```
 
@@ -294,13 +312,14 @@ This tests all 6 core components:
 
 ## 📖 Documentation
 
-- **[Quick Start Guide](QUICKSTART.md)**: 5-minute setup guide
+- **[SUMO Quick Start](SUMO_QUICKSTART.md)**: Run SUMO demo in 5 minutes
+- **[Web Dashboard Guide](WEB_DASHBOARD_GUIDE.md)**: Dashboard features and usage
+- **[Quick Start Guide](QUICKSTART.md)**: Setup guide
 - **[Deployment Guide](DEPLOYMENT_GUIDE.md)**: Deploy to GitHub Pages
 - **[Project Summary](PROJECT_SUMMARY.md)**: Complete project overview
-- **[SUMO Integration Guide](docs/SUMO_INTEGRATION.md)**: How to integrate SUMO (Simulation of Urban MObility)
+- **[SUMO Integration Guide](docs/SUMO_INTEGRATION.md)**: Full SUMO integration (6 phases)
 - **[Scripts Documentation](scripts/README.md)**: All available shell scripts
 - **[Membership Functions Analysis](docs/README.md)**: Detailed fuzzy logic analysis
-- **Membership Functions Visualization**: `docs/membership_functions.png`
 
 ## 🛠️ Technologies Used
 
@@ -308,6 +327,7 @@ This tests all 6 core components:
 - **scikit-fuzzy**: Fuzzy logic implementation (Mamdani inference)
 - **NumPy & Pandas**: Data processing and analysis
 - **Matplotlib**: Visualization and plotting
+- **SUMO + TraCI**: Microscopic traffic simulation
 - **Poetry**: Dependency management
 - **Chart.js**: Interactive web visualizations
 - **HTML/CSS/JavaScript**: Web dashboard
@@ -318,9 +338,10 @@ This tests all 6 core components:
    - Adaptive Fuzzy Traffic Controllers (IEEE Xplore)
    - Mamdani Inference for Traffic Optimization
 
-2. **Fuzzy Logic**:
+2. **Libraries & Tools**:
    - [scikit-fuzzy Documentation](https://pythonhosted.org/scikit-fuzzy/)
-   - Fuzzy Logic Toolbox (MATLAB equivalent in Python)
+   - [SUMO Documentation](https://sumo.dlr.de/docs/)
+   - [TraCI (Traffic Control Interface)](https://sumo.dlr.de/docs/TraCI.html)
 
 ## 🤝 Contributing
 
