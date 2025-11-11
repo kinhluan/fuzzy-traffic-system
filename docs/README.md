@@ -124,11 +124,13 @@ Bước 3 - Defuzzification:
 #### 📊 So Sánh Với Fixed-Time Controller
 
 **Fixed-Time:** Luôn đèn xanh 30s mỗi hướng
+
 - ❌ Không thích ứng với mật độ thực tế
 - ❌ Lãng phí thời gian khi giao thông thưa
 - ❌ Không đủ thời gian khi ùn tắc
 
 **Fuzzy Controller:** Thời gian 10-90s tùy tình huống
+
 - ✅ Ngắn (10-20s) khi ít xe → giảm chờ đợi không cần thiết
 - ✅ Dài (70-90s) khi đông xe → tăng throughput
 - ✅ Cân bằng (40-50s) khi cần fairness

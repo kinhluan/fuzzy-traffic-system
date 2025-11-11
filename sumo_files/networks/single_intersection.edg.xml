@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SUMO Edge (Road) Definition File -->
+<!-- Defines roads connecting to/from the intersection -->
+<edges xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/edges_file.xsd">
+
+    <!-- Incoming edges (approaching intersection) -->
+    <edge id="north_in" from="north_in" to="center" priority="78" numLanes="2" speed="13.89" type="urban"/>
+    <edge id="south_in" from="south_in" to="center" priority="78" numLanes="2" speed="13.89" type="urban"/>
+    <edge id="east_in" from="east_in" to="center" priority="78" numLanes="2" speed="13.89" type="urban"/>
+    <edge id="west_in" from="west_in" to="center" priority="78" numLanes="2" speed="13.89" type="urban"/>
+
+    <!-- Outgoing edges (leaving intersection) -->
+    <edge id="north_out" from="center" to="north_out" priority="78" numLanes="2" speed="13.89" type="urban"/>
+    <edge id="south_out" from="center" to="south_out" priority="78" numLanes="2" speed="13.89" type="urban"/>
+    <edge id="east_out" from="center" to="east_out" priority="78" numLanes="2" speed="13.89" type="urban"/>
+    <edge id="west_out" from="center" to="west_out" priority="78" numLanes="2" speed="13.89" type="urban"/>
+
+</edges>

@@ -78,6 +78,7 @@ poetry run python examples/simple_comparison.py
 ```
 
 This will:
+
 - Run simulations for all 9 traffic scenarios
 - Compare Fuzzy vs Fixed-Time controllers (30 min simulation each)
 - Generate comprehensive performance metrics
@@ -95,9 +96,10 @@ Start the local web server:
 cd web && python3 -m http.server 8000
 ```
 
-Then open **http://localhost:8000** in your browser.
+Then open **<http://localhost:8000>** in your browser.
 
 **Dashboard Features:**
+
 - 📊 Performance comparison charts (waiting time, queue length, throughput)
 - 📈 Detailed metrics tables for all scenarios
 - 🎯 Scenario selector to compare different traffic patterns
@@ -282,6 +284,7 @@ poetry run python test_system.py
 ```
 
 This tests all 6 core components:
+
 1. ✅ Membership Functions creation
 2. ✅ Fuzzy Rules generation (112 rules)
 3. ✅ Fuzzy Controller inference

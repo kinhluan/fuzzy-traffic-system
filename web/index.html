@@ -94,20 +94,57 @@
             </div>
         </section>
 
+        <!-- Summary Dashboard -->
+        <section id="summary" class="section">
+            <h2>📊 Overall Performance Summary</h2>
+            <div class="card">
+                <div id="summary-stats" class="summary-stats">
+                    <div class="stat-card">
+                        <h3>Average Improvement</h3>
+                        <p class="stat-value" id="avg-improvement">--</p>
+                        <p class="stat-label">Waiting Time</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Best Scenario</h3>
+                        <p class="stat-value" id="best-scenario">--</p>
+                        <p class="stat-label">Highest Performance</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Success Rate</h3>
+                        <p class="stat-value" id="success-rate">--</p>
+                        <p class="stat-label">Scenarios Improved</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Queue Reduction</h3>
+                        <p class="stat-value" id="queue-reduction">--</p>
+                        <p class="stat-label">Average Across All</p>
+                    </div>
+                </div>
+
+                <div class="chart-container" style="margin-top: 2rem;">
+                    <canvas id="allScenariosChart"></canvas>
+                </div>
+            </div>
+        </section>
+
         <!-- Performance Comparison -->
         <section id="comparison" class="section">
-            <h2>Performance Comparison</h2>
+            <h2>🔍 Detailed Scenario Comparison</h2>
             <div class="card">
                 <div class="scenario-selector">
                     <label for="scenario-select">Select Scenario:</label>
                     <select id="scenario-select">
-                        <option value="normal">Normal Traffic</option>
-                        <option value="rush_ns">Rush Hour (N-S)</option>
-                        <option value="rush_ew">Rush Hour (E-W)</option>
-                        <option value="light">Light Traffic</option>
-                        <option value="asymmetric_north">Asymmetric (Heavy North)</option>
-                        <option value="peak">Peak Congestion</option>
+                        <option value="normal">🚗 Normal Traffic</option>
+                        <option value="rush_ns">🔴 Rush Hour (N-S)</option>
+                        <option value="rush_ew">🔴 Rush Hour (E-W)</option>
+                        <option value="light">🌙 Light Traffic</option>
+                        <option value="asymmetric_north">⚠️ Asymmetric (Heavy North)</option>
+                        <option value="peak">🔥 Peak Congestion</option>
+                        <option value="morning">☀️ Morning Commute</option>
+                        <option value="evening">🌆 Evening Commute</option>
+                        <option value="weekend">🎉 Weekend Leisure</option>
                     </select>
+                    <button id="show-all-btn" class="btn btn-secondary">📊 View All Scenarios</button>
                 </div>
 
                 <div id="scenario-info" class="scenario-info"></div>
@@ -195,6 +232,6 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main_enhanced.js"></script>
 </body>
 </html>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SUMO Edge Type Definition File -->
+<!-- Defines road type characteristics -->
+<types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/types_file.xsd">
+
+    <!-- Urban road type: 2 lanes, 50 km/h (13.89 m/s) -->
+    <type id="urban" priority="78" numLanes="2" speed="13.89"/>
+
+</types>

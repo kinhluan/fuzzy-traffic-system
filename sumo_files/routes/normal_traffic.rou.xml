@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SUMO Route Definition File -->
+<!-- Normal Traffic Scenario: 12 vehicles/minute per direction (balanced flow) -->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+
+    <!-- Vehicle type definition -->
+    <vType id="car" accel="2.6" decel="4.5" sigma="0.5" length="5.0" minGap="2.5" maxSpeed="13.89" guiShape="passenger"/>
+
+    <!-- Route definitions (all possible paths through intersection) -->
+    <!-- From North -->
+    <route id="north_south" edges="north_in south_out"/>
+    <route id="north_east" edges="north_in east_out"/>
+    <route id="north_west" edges="north_in west_out"/>
+
+    <!-- From South -->
+    <route id="south_north" edges="south_in north_out"/>
+    <route id="south_east" edges="south_in east_out"/>
+    <route id="south_west" edges="south_in west_out"/>
+
+    <!-- From East -->
+    <route id="east_west" edges="east_in west_out"/>
+    <route id="east_north" edges="east_in north_out"/>
+    <route id="east_south" edges="east_in south_out"/>
+
+    <!-- From West -->
+    <route id="west_east" edges="west_in east_out"/>
+    <route id="west_north" edges="west_in north_out"/>
+    <route id="west_south" edges="west_in south_out"/>
+
+    <!-- Traffic flow definitions -->
+    <!-- Normal Traffic: 12 vehicles/min = 1 vehicle every 5 seconds per direction -->
+    <!-- Using probability distribution: 50% straight, 25% left, 25% right -->
+
+    <!-- North traffic (12 veh/min) -->
+    <flow id="flow_north_south" type="car" route="north_south" begin="0" end="3600" probability="0.1" departLane="best" departSpeed="max"/>
+    <flow id="flow_north_east" type="car" route="north_east" begin="0" end="3600" probability="0.05" departLane="best" departSpeed="max"/>
+    <flow id="flow_north_west" type="car" route="north_west" begin="0" end="3600" probability="0.05" departLane="best" departSpeed="max"/>
+
+    <!-- South traffic (12 veh/min) -->
+    <flow id="flow_south_north" type="car" route="south_north" begin="0" end="3600" probability="0.1" departLane="best" departSpeed="max"/>
+    <flow id="flow_south_east" type="car" route="south_east" begin="0" end="3600" probability="0.05" departLane="best" departSpeed="max"/>
+    <flow id="flow_south_west" type="car" route="south_west" begin="0" end="3600" probability="0.05" departLane="best" departSpeed="max"/>
+
+    <!-- East traffic (12 veh/min) -->
+    <flow id="flow_east_west" type="car" route="east_west" begin="0" end="3600" probability="0.1" departLane="best" departSpeed="max"/>
+    <flow id="flow_east_north" type="car" route="east_north" begin="0" end="3600" probability="0.05" departLane="best" departSpeed="max"/>
+    <flow id="flow_east_south" type="car" route="east_south" begin="0" end="3600" probability="0.05" departLane="best" departSpeed="max"/>
+
+    <!-- West traffic (12 veh/min) -->
+    <flow id="flow_west_east" type="car" route="west_east" begin="0" end="3600" probability="0.1" departLane="best" departSpeed="max"/>
+    <flow id="flow_west_north" type="car" route="west_north" begin="0" end="3600" probability="0.05" departLane="best" departSpeed="max"/>
+    <flow id="flow_west_south" type="car" route="west_south" begin="0" end="3600" probability="0.05" departLane="best" departSpeed="max"/>
+
+</routes>
