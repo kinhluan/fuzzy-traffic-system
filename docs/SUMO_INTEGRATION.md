@@ -128,7 +128,7 @@
                       └──────────────────────────────────────────┘
 ```
 
-### File Structure (Sau khi tích hợp)
+### File Structure (Current Implementation)
 
 ```
 fuzzy-traffic-system/
@@ -138,29 +138,31 @@ fuzzy-traffic-system/
 │   │   ├── fuzzy_rules.py
 │   │   └── controller.py
 │   ├── simulation/
-│   │   ├── __init__.py
-│   │   ├── base_simulator.py     # NEW: Abstract base class
-│   │   ├── traffic_model.py      # Rename to queue_simulator.py
-│   │   ├── sumo_simulator.py     # NEW: SUMO integration
+│   │   ├── traffic_model.py       # Queue-based simulator (giữ nguyên)
+│   │   ├── sumo_simulator.py      # ✅ NEW: SUMO integration
 │   │   ├── fixed_controller.py
 │   │   └── scenarios.py
-│   └── main.py                    # Update to support both simulators
-├── sumo_files/                    # NEW: SUMO configuration files
+│   └── main.py                     # Queue-based comparison
+├── sumo_files/                     # ✅ NEW: SUMO configuration files
 │   ├── networks/
-│   │   ├── single_intersection.net.xml    # Network definition
-│   │   ├── single_intersection.nod.xml    # Nodes (junction)
-│   │   ├── single_intersection.edg.xml    # Edges (roads)
-│   │   ├── single_intersection.con.xml    # Connections
-│   │   └── single_intersection.tll.xml    # Traffic light logic
+│   │   ├── single_intersection.net.xml    # ✅ Generated network
+│   │   ├── single_intersection.nod.xml    # ✅ Node definitions
+│   │   ├── single_intersection.edg.xml    # ✅ Edge definitions
+│   │   └── single_intersection.typ.xml    # ✅ Road type definitions
 │   ├── routes/
-│   │   ├── normal_traffic.rou.xml         # Vehicle routes
-│   │   ├── rush_hour_ns.rou.xml
-│   │   └── ...
-│   ├── config/
-│   │   └── simulation.sumocfg            # SUMO config file
-│   └── README.md                          # How to edit SUMO files
-└── docs/
-    └── SUMO_INTEGRATION.md                # This file
+│   │   └── normal_traffic.rou.xml         # ✅ Normal traffic scenario
+│   └── configs/
+│       └── single_intersection.sumocfg    # ✅ SUMO config file
+├── scripts/
+│   ├── sumo_setup.sh               # ✅ Generate SUMO network
+│   ├── sumo_run.sh                 # ✅ Run with fuzzy controller
+│   ├── sumo_gui.sh                 # ✅ Manual SUMO-GUI
+│   └── sumo_headless.sh            # ✅ Headless mode
+├── examples/
+│   └── demo_sumo.py                # ✅ SUMO demo script
+├── docs/
+│   └── SUMO_INTEGRATION.md         # This file
+└── SUMO_QUICKSTART.md              # ✅ Quick start guide
 ```
 
 ---
@@ -227,51 +229,37 @@ python -c "import sumolib; print('sumolib OK')"
 
 ## 📝 Implementation Plan
 
-### Phase 1: Abstract Interface (1-2 giờ)
+### ✅ Phase 1: Network Creation (COMPLETED)
 
-**Mục tiêu**: Tạo abstract base class để cả Queue và SUMO có cùng interface
+**Status**: ✅ Done
 
-**Files to create/modify**:
+**Created files**:
+- `sumo_files/networks/single_intersection.nod.xml` - 8 nodes (1 center + 4 in + 4 out)
+- `sumo_files/networks/single_intersection.edg.xml` - 8 edges (4 incoming + 4 outgoing)
+- `sumo_files/networks/single_intersection.typ.xml` - Urban road type definition
+- Generated via: `./scripts/sumo_setup.sh`
 
-1. `src/simulation/base_simulator.py` (NEW)
-   - Define `AbstractTrafficSimulator` abstract class
-   - Methods: `get_traffic_state()`, `set_light_state()`, `step()`, `get_statistics()`
-
-2. `src/simulation/queue_simulator.py` (RENAME from traffic_model.py)
-   - Inherit from `AbstractTrafficSimulator`
-   - No logic changes, just inherit from base class
-
-**Validation**: Run existing tests, ensure nothing breaks
+**Network specifications**:
+- 4-way intersection at (0, 0)
+- 2 lanes per direction
+- Speed limit: 50 km/h (13.89 m/s)
+- Road length: 200m + 50m boundary
 
 ---
 
-### Phase 2: SUMO Network Creation (2-3 giờ)
+### ✅ Phase 2: Route Generation (COMPLETED)
 
-**Mục tiêu**: Tạo 4-way intersection trong SUMO
+**Status**: ✅ Done
 
-**Tools needed**: NETEDIT (SUMO's GUI network editor)
+**Created files**:
+- `sumo_files/routes/normal_traffic.rou.xml` - Normal traffic (12 veh/min per direction)
 
-**Steps**:
+**Traffic flow configuration**:
+- 12 flows (4 directions × 3 turning movements)
+- Probability-based distribution: 50% straight, 25% left, 25% right
+- Vehicle type: Standard car (5m length, 2.6 m/s² accel)
 
-1. **Create network files**:
-   ```bash
-   cd sumo_files/networks
-   netedit
-   ```
-
-2. **Design in NETEDIT**:
-   - Create 4-way junction (tọa độ 0,0)
-   - Add 4 incoming edges (length ~200m each)
-   - Add 4 outgoing edges
-   - Define connections (straight, left turn, right turn)
-   - Add traffic light program
-
-3. **Export files**:
-   - `single_intersection.net.xml` (compiled network)
-   - `single_intersection.nod.xml` (nodes)
-   - `single_intersection.edg.xml` (edges)
-
-**Alternative**: Use command-line tools (faster if you know XML):
+**Alternative**: Use command-line generation:
 
 ```bash
 # Define nodes
@@ -312,11 +300,20 @@ netconvert --node-files=single_intersection.nod.xml \
 
 ---
 
-### Phase 3: Route Generation (1-2 giờ)
+### ✅ Phase 3: SUMO Configuration (COMPLETED)
 
-**Mục tiêu**: Tạo vehicle routes tương đương với scenarios hiện tại
+**Status**: ✅ Done
 
-**Example route file** (`normal_traffic.rou.xml`):
+**Created files**:
+- `sumo_files/configs/single_intersection.sumocfg` - Main configuration file
+
+**Configuration**:
+- Simulation time: 3600 seconds (1 hour)
+- Step length: 1.0 second
+- No teleporting (vehicles wait indefinitely)
+- Collision warnings enabled
+
+**Example configuration**:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -359,13 +356,14 @@ def generate_route_file(scenario_name, arrival_rates):
 
 ---
 
-### Phase 4: SUMO Simulator Class (3-4 giờ)
+### ✅ Phase 4: SUMO Simulator Class (COMPLETED)
 
-**Mục tiêu**: Implement `SUMOSimulator` class using TraCI API
+**Status**: ✅ Done
 
-**File**: `src/simulation/sumo_simulator.py`
+**Created files**:
+- `src/simulation/sumo_simulator.py` - Full implementation with TraCI
 
-**Key methods**:
+**Key features implemented**:
 
 ```python
 class SUMOSimulator(AbstractTrafficSimulator):
@@ -425,11 +423,14 @@ traci.close()
 
 ---
 
-### Phase 5: Integration with Fuzzy Controller (2-3 giờ)
+### ✅ Phase 5: Integration with Fuzzy Controller (COMPLETED)
 
-**Mục tiêu**: Connect SUMO simulator với fuzzy controller
+**Status**: ✅ Done
 
-**File**: `src/main_sumo.py` (new main file for SUMO)
+**Created files**:
+- `examples/demo_sumo.py` - Complete demo integrating fuzzy controller with SUMO
+
+**Implementation**:
 
 ```python
 from src.fuzzy_controller.controller import FuzzyTrafficController
@@ -471,11 +472,30 @@ def run_sumo_simulation():
 
 ---
 
-### Phase 6: Comparison & Validation (1-2 giờ)
+### ✅ Phase 6: Shell Scripts & Documentation (COMPLETED)
 
-**Mục tiêu**: Run same scenarios on both simulators and compare
+**Status**: ✅ Done
 
-**Create**: `examples/compare_simulators.py`
+**Created scripts**:
+- `scripts/sumo_setup.sh` - Automated network generation
+- `scripts/sumo_run.sh` - Run demo with GUI
+- `scripts/sumo_gui.sh` - Open SUMO-GUI manually
+- `scripts/sumo_headless.sh` - Run without GUI (faster)
+
+**Created documentation**:
+- `SUMO_QUICKSTART.md` - Quick start guide (5 minutes)
+- Updated `README.md` - Added SUMO sections
+- Updated `docs/SUMO_INTEGRATION.md` - This file
+
+---
+
+### 🔜 Phase 7: Comparison & Validation (TODO)
+
+**Status**: ⏳ Planned
+
+**Next step**: Create comparison script to validate SUMO vs Queue-based
+
+**To create**: `examples/compare_simulators.py`
 
 ```python
 def compare_simulators(scenario):
@@ -827,25 +847,45 @@ if __name__ == "__main__":
 
 ---
 
-## 🚀 Next Steps
+## 🚀 Implementation Status
 
-### Immediate (Để hoàn thành tích hợp cơ bản):
+### ✅ Completed (Option 1 - Quick Start):
 
-1. ✅ Install SUMO
-2. ✅ Create abstract simulator interface
-3. ✅ Build SUMO network (single intersection)
-4. ✅ Implement SUMOSimulator class
-5. ✅ Run comparison on 1 scenario
+1. ✅ Install SUMO (documented in SUMO_QUICKSTART.md)
+2. ✅ SUMO network files created (single_intersection.nod.xml, .edg.xml, .typ.xml)
+3. ✅ Route file for Normal Traffic (normal_traffic.rou.xml)
+4. ✅ SUMO configuration file (single_intersection.sumocfg)
+5. ✅ SUMOSimulator class implemented (src/simulation/sumo_simulator.py)
+6. ✅ Demo script created (examples/demo_sumo.py)
+7. ✅ Shell scripts for easy execution:
+   - `./scripts/sumo_setup.sh` - Generate network
+   - `./scripts/sumo_run.sh` - Run with GUI
+   - `./scripts/sumo_gui.sh` - Manual SUMO-GUI
+   - `./scripts/sumo_headless.sh` - Headless mode
 
-### Advanced (Tính năng nâng cao):
+### Quick Start:
 
-1. **Multi-intersection network**: Mở rộng từ 1 giao lộ lên mạng 3x3 giao lộ
-2. **Cooperative control**: Điều khiển nhiều giao lộ cùng lúc
-3. **Emergency vehicles**: Ưu tiên xe cứu thương
-4. **Pedestrian crossing**: Thêm đèn cho người đi bộ
-5. **Adaptive routes**: Xe chọn đường đi tối ưu
-6. **Emissions analysis**: Phân tích CO2, NOx
-7. **Real map**: Import OSM (OpenStreetMap) data
+```bash
+# 1. Setup network
+./scripts/sumo_setup.sh
+
+# 2. Run demo
+./scripts/sumo_run.sh
+```
+
+See [SUMO_QUICKSTART.md](../SUMO_QUICKSTART.md) for detailed instructions.
+
+### 🔜 Future Enhancements (Tính năng nâng cao):
+
+1. **More scenarios**: Add all 9 scenarios (rush hour, peak, etc.)
+2. **Queue vs SUMO comparison**: Side-by-side performance comparison
+3. **Multi-intersection network**: Expand from 1 to 3x3 intersection grid
+4. **Cooperative control**: Coordinate multiple intersections
+5. **Emergency vehicles**: Priority for ambulances
+6. **Pedestrian crossing**: Add pedestrian signals
+7. **Adaptive routes**: Dynamic route choice
+8. **Emissions analysis**: CO2, NOx, fuel consumption
+9. **Real map**: Import OpenStreetMap data
 
 ### Research Extensions:
 
@@ -917,6 +957,7 @@ Nếu gặp vấn đề khi tích hợp SUMO:
 
 ---
 
-**Tác giả**: Luân B
-**Ngày tạo**: 2025-11-10
-**Phiên bản**: 1.0
+**Author**: Luân B
+**Created**: 2025-11-10
+**Last Updated**: 2025-11-11
+**Version**: 2.0 (Option 1 - Quick Start Completed)
